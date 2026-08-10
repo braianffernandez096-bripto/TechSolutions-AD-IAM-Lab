@@ -26,6 +26,8 @@ El dominio utilizado en el laboratorio es:
 ```text
 techsolutions.local
 
+```
+
 # 📸 Evidencias
 
 ## 1. Estructura general de Active Directory
