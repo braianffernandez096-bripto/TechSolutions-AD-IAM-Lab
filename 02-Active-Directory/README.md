@@ -20,7 +20,7 @@ Los equipos fueron separados en la OU `09_Equipos`, utilizando sub-OUs según el
 
 Los grupos de seguridad fueron centralizados en la OU `11_Grupos`, diferenciando los Global Groups (GG) de los Domain Local Groups (DL).
 
-![Organización de grupos](evidencias/03-Organización-Grupos.png)
+![Organización de grupos](Evidencias/03-Organización-Grupos.png)
 
 ---
 
