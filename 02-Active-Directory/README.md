@@ -12,7 +12,7 @@ La estructura del dominio fue organizada mediante Unidades Organizativas (OU), s
 
 Los equipos fueron separados en la OU `09_Equipos`, utilizando sub-OUs según el tipo de equipo y sistema operativo.
 
-![Organización de equipos](evidencias/02-organizacion-equipos.png)
+![Organización de equipos](Evidencias/02-Organización-Equipos.png)
 
 ---
 
@@ -20,7 +20,7 @@ Los equipos fueron separados en la OU `09_Equipos`, utilizando sub-OUs según el
 
 Los grupos de seguridad fueron centralizados en la OU `11_Grupos`, diferenciando los Global Groups (GG) de los Domain Local Groups (DL).
 
-![Organización de grupos](evidencias/03-organizacion-grupos.png)
+![Organización de grupos](evidencias/03-Organización-Grupos.png)
 
 ---
 
@@ -28,7 +28,7 @@ Los grupos de seguridad fueron centralizados en la OU `11_Grupos`, diferenciando
 
 Los usuarios fueron ubicados dentro de las OUs correspondientes a sus departamentos, permitiendo posteriormente asociarlos a los grupos globales correspondientes.
 
-![Organización de usuarios](evidencias/04-organizacion-usuarios.png)
+![Organización de usuarios](Evidencias/04-Organización-Usuarios.png)
 El dominio utilizado en el laboratorio es:
 
 ```text
