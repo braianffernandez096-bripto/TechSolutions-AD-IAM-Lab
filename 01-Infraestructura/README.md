@@ -38,4 +38,4 @@ La infraestructura utiliza una red privada de laboratorio:
 
 ```text
 Red:
-192.168.64.0/24
+192.168.x.x
