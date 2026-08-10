@@ -4,7 +4,7 @@
 
 La estructura del dominio fue organizada mediante Unidades Organizativas (OU), separando las diferentes áreas y funciones de la organización.
 
-![Estructura general de Active Directory](Evidencias/01-estructura-active-directory.png)
+![Estructura general de Active Directory](Evidencias/01-Estructura-Active-Directory.png)
 
 ---
 
