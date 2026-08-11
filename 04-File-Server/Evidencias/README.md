@@ -14,3 +14,11 @@ Esta evidencia muestra la estructura de carpetas creada dentro de:
 
 ```text
 C:\Compartidos
+Ciberseguridad
+Direccion
+Finanzas
+IT
+Marketing
+Operaciones
+RRHH
+Ventas
