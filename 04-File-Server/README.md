@@ -16,7 +16,8 @@ La implementación se encuentra integrada con el modelo IAM/AGDLP desarrollado p
 - Organizar los recursos por departamento.
 - Aplicar permisos NTFS mediante grupos de seguridad.
 - Evitar asignaciones directas de permisos a usuarios individuales.
-- Diferenciar niveles de acceso de lectura y modificación.
+- Controlar el acceso a los recursos mediante grupos de Active Directory.
+- Aplicar permisos de modificación sobre los recursos autorizados.
 - Validar accesos permitidos.
 - Validar accesos denegados.
 - Aplicar el principio de mínimo privilegio.
@@ -31,10 +32,10 @@ La estructura implementada sigue el siguiente modelo:
 Active Directory
       │
       ▼
-Global Groups
+Global Groups (GG)
       │
       ▼
-Domain Local Groups
+Domain Local Groups (DL)
       │
       ▼
 Permisos NTFS
