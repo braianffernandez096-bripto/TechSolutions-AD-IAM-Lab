@@ -2,6 +2,8 @@
 
 > Reconstruido desde cero verificando cada GPO directo en la consola. Se documenta GPO por GPO a medida que se confirma.
 
+**Inventario de partida** (5 GPOs en el dominio, confirmado en [`evidencias/00-Inventario-GPOs.png`](evidencias/00-Inventario-GPOs.png)): `Default Domain Controllers Policy` (fuera de alcance, sin configuración custom), `Default Domain Policy` (secciones 3 y 4, y el hallazgo), `GPO - Windows10 - Banner Legal` (sección 1), `GPO_Auditoria_Objetos` (fuera de alcance — ver [`06-Auditoria`](../06-Auditoria/)), `GPO_Restriccion_Ventas` (sección 2).
+
 ---
 
 ## 1️⃣ Banner legal de inicio de sesión
