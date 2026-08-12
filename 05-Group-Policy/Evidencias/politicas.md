@@ -2,7 +2,7 @@
 
 > Reconstruido desde cero verificando cada GPO directo en la consola. Se documenta GPO por GPO a medida que se confirma.
 
-**Inventario de partida** (5 GPOs en el dominio, confirmado en [`evidencias/00-Inventario-GPOs.png`](evidencias/00-Inventario-GPOs.png)): `Default Domain Controllers Policy` (fuera de alcance, sin configuración custom), `Default Domain Policy` (secciones 3 y 4), `GPO - Windows10 - Banner Legal` (sección 1), `GPO_Auditoria_Objetos` (fuera de alcance — ver [`06-Auditoria`](../06-Auditoria/)), `GPO_Restriccion_Ventas` (sección 2).
+**Inventario de partida** (5 GPOs en el dominio, confirmado en [`Evidencias/00-Inventario-GPOs.png`](Evidencias/00-Inventario-GPOs.png)): `Default Domain Controllers Policy` (fuera de alcance, sin configuración custom), `Default Domain Policy` (secciones 3 y 4), `GPO - Windows10 - Banner Legal` (sección 1), `GPO_Auditoria_Objetos` (fuera de alcance — ver [`06-Auditoria`](../06-Auditoria/)), `GPO_Restriccion_Ventas` (sección 2).
 
 ---
 
@@ -27,7 +27,7 @@
 
 **Alcance real:** aplica a los equipos cliente Windows 10 dentro de `09_Equipos/Windows10` (no está vinculada en la raíz del dominio).
 
-**Evidencia:** [`evidencias/01-Banner-Legal-Ambito.png`](evidencias/01-Banner-Legal-Ambito.png), [`evidencias/02-Banner-Legal-Configuracion.png`](evidencias/02-Banner-Legal-Configuracion.png).
+**Evidencia:** [`Evidencias/01-Banner-Legal-Ambito.png`](Evidencias/01-Banner-Legal-Ambito.png), [`Evidencias/02-Banner-Legal-Configuracion.png`](Evidencias/02-Banner-Legal-Configuracion.png).
 
 ---
 
@@ -52,7 +52,7 @@
 
 Es una directiva de **usuario**, no de equipo — viaja con la cuenta sin importar desde qué PC del dominio se loguee.
 
-**Evidencia:** [`evidencias/03-Restriccion-Ventas-Ambito.png`](evidencias/03-Restriccion-Ventas-Ambito.png), [`evidencias/04-Restriccion-Ventas-Configuracion.png`](evidencias/04-Restriccion-Ventas-Configuracion.png).
+**Evidencia:** [`Evidencias/03-Restriccion-Ventas-Ambito.png`](Evidencias/03-Restriccion-Ventas-Ambito.png), [`Evidencias/04-Restriccion-Ventas-Configuracion.png`](Evidencias/04-Restriccion-Ventas-Configuracion.png).
 
 ## 3️⃣ Bloqueo de cuenta
 
@@ -79,7 +79,7 @@ Las directivas de cuenta (bloqueo, contraseñas) solo tienen efecto real si est�
 
 La cuenta `Administrador` local queda sujeta a la misma directiva de bloqueo que cualquier otra cuenta — por defecto Windows la exime de bloqueo por intentos fallidos (para que un atacante no pueda dejar sin acceso administrativo al equipo bloqueándola a propósito). Acá se decidió habilitar la excepción a esa exención a propósito: la política aplica sin distinción de rango, y el riesgo de quedar sin acceso administrativo está mitigado porque no depende de esa única cuenta (existe `Admins. del dominio` y la delegación a `SG_Delegados_Helpdesk`).
 
-**Evidencia:** [`evidencias/05-Vinculo-Default-Domain-Policy.png`](evidencias/05-Vinculo-Default-Domain-Policy.png), [`evidencias/06-Bloqueo-Cuenta-15min.png`](evidencias/06-Bloqueo-Cuenta-15min.png).
+**Evidencia:** [`Evidencias/05-Vinculo-Default-Domain-Policy.png`](Evidencias/05-Vinculo-Default-Domain-Policy.png), [`Evidencias/06-Bloqueo-Cuenta-15min.png`](Evidencias/06-Bloqueo-Cuenta-15min.png).
 
 ## 4️⃣ Bloqueo de pantalla por inactividad
 
@@ -93,4 +93,4 @@ La cuenta `Administrador` local queda sujeta a la misma directiva de bloqueo que
 
 **Vínculo:** raíz del dominio (`techsolutions.local`) — ver Ámbito en la sección 3, misma GPO. **Alcance:** todo el dominio, incluido el DC.
 
-**Evidencia:** [`evidencias/07-Limite-Inactividad-600s.png`](evidencias/07-Limite-Inactividad-600s.png).
+**Evidencia:** [`Evidencias/07-Limite-Inactividad-600s.png`](Evidencias/07-Limite-Inactividad-600s.png).
