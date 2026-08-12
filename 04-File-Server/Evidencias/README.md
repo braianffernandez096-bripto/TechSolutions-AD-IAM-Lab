@@ -72,8 +72,8 @@ Intento de acceso a `\\DC01\Compartidos\Marketing` desde un usuario sin membres�
 
 Estas dos capturas documentan el borrado del archivo de prueba `Prueba-IT`, completando la validación del permiso **Modificar** otorgado a `DL_IT_RW`: no solo se puede crear y editar (evidencias 04 y 05), también eliminar.
 
-- **[`07-Eliminación-Solicitada.png`](07-Eliminación-Solicitada.png)** — cuadro de confirmación de Windows al eliminar `Prueba-IT` (Documento de texto, 19 bytes, modificado 11/8/2026 19:53).
-- **[`08-Eliminación-Confirmada.png`](08-Eliminación-Confirmada.png)** — la carpeta `IT` vacía inmediatamente después, confirmando que la eliminación se ejecutó.
+- **[`07-Eliminación-Solicitada.png`]** — cuadro de confirmación de Windows al eliminar `Prueba-IT` (Documento de texto, 19 bytes, modificado 11/8/2026 19:53).
+- **[`08-Eliminación-Confirmada.png`]** — la carpeta `IT` vacía inmediatamente después, confirmando que la eliminación se ejecutó.
 
 ---
 
@@ -81,7 +81,7 @@ Estas dos capturas documentan el borrado del archivo de prueba `Prueba-IT`, comp
 
 **Archivo:** [`09-Recursos-Compartidos-Verificados.png`](09-Recursos-Compartidos-Verificados.png)
 
-Salida de `Get-SmbShare | Format-Table Name, Path, Description` en `DC01`, usada para auditar todos los recursos compartidos activos del servidor. Esta verificación detectó que las 8 carpetas de departamento habían quedado compartidas también de forma individual (además de la raíz `Compartidos`) — un resto de la etapa de configuración inicial, sin impacto en el acceso real gracias al NTFS, pero inconsistente con el diseño documentado de un único punto de entrada. Se corrigió dando de baja los 8 recursos individuales con `Remove-SmbShare`, dejando únicamente `Compartidos` (más los recursos administrativos estándar de Windows/AD: `ADMIN$`, `C$`, `IPC$`, `NETLOGON`, `SYSVOL`). Detalle completo del hallazgo en [`09-Documentacion/lecciones-aprendidas.md`](../../09-Documentacion/lecciones-aprendidas.md).
+Salida de `Get-SmbShare | Format-Table Name, Path, Description` en `DC01`, usada para auditar todos los recursos compartidos activos del servidor. Esta verificación detectó que las 8 carpetas de departamento habían quedado compartidas también de forma individual (además de la raíz `Compartidos`) — un resto de la etapa de configuración inicial, sin impacto en el acceso real gracias al NTFS, pero inconsistente con el diseño documentado de un único punto de entrada. Se corrigió dando de baja los 8 recursos individuales con `Remove-SmbShare`, dejando únicamente `Compartidos` (más los recursos administrativos estándar de Windows/AD: `ADMIN$`, `C$`, `IPC$`, `NETLOGON`, `SYSVOL`).
 
 ---
 
