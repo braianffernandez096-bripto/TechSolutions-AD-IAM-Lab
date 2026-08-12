@@ -72,8 +72,8 @@ Intento de acceso a `\\DC01\Compartidos\Marketing` desde un usuario sin membres�
 
 Estas dos capturas documentan el borrado del archivo de prueba `Prueba-IT`, completando la validación del permiso **Modificar** otorgado a `DL_IT_RW`: no solo se puede crear y editar (evidencias 04 y 05), también eliminar.
 
-- **[`07-Eliminación-Solicitada.png`]** — cuadro de confirmación de Windows al eliminar `Prueba-IT` (Documento de texto, 19 bytes, modificado 11/8/2026 19:53).
-- **[`08-Eliminación-Confirmada.png`]** — la carpeta `IT` vacía inmediatamente después, confirmando que la eliminación se ejecutó.
+- **[`07-Eliminación-Solicitada.png`](07-Eliminación-Solicitada.png)** — cuadro de confirmación de Windows al eliminar `Prueba-IT` (Documento de texto, 19 bytes, modificado 11/8/2026 19:53).
+- **[`08-Eliminación-Confirmada.png`](08-Eliminación-Confirmada.png)** — la carpeta `IT` vacía inmediatamente después, confirmando que la eliminación se ejecutó.
 
 ---
 
