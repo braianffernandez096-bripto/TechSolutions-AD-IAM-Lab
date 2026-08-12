@@ -1,6 +1,6 @@
 # 📜 05 — Group Policy (GPO)
 
-Directivas centralizadas para administración y cumplimiento del dominio. Detalle completo, con evidencia de consola, en [`politicas.md`](politicas.md).
+Directivas centralizadas para administración y cumplimiento del dominio. Detalle completo, con evidencia de consola, en [`Evidencias/politicas.md`](Evidencias/politicas.md).
 
 ---
 
