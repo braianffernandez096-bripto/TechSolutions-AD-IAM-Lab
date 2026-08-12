@@ -6,7 +6,7 @@ Directivas centralizadas para administración y cumplimiento del dominio. Detall
 
 ## 📋 GPOs en alcance
 
-Inventario completo del dominio (5 GPOs, [`evidencias/00-Inventario-GPOs.png`](evidencias/00-Inventario-GPOs.png)): 3 en esta carpeta, `GPO_Auditoria_Objetos` documentada en [`06-Auditoria`](../06-Auditoria/), y `Default Domain Controllers Policy` fuera de alcance (sin configuración custom).
+Inventario completo del dominio (5 GPOs, [`Evidencias/00-Inventario-GPOs.png`](Evidencias/00-Inventario-GPOs.png)): 3 en esta carpeta, `GPO_Auditoria_Objetos` documentada en [`06-Auditoria`](../06-Auditoria/), y `Default Domain Controllers Policy` fuera de alcance (sin configuración custom).
 
 | GPO | Vinculada a | Propósito |
 |---|---|---|
@@ -24,7 +24,7 @@ Las directivas de cuenta (bloqueo y contraseñas) solo tienen efecto real si est
 
 ## 📸 Evidencias
 
-Ver [`evidencias/`](evidencias/): 8 capturas de consola — el inventario inicial de GPOs más una por cada sección de `politicas.md`, tomadas de cero para esta versión de la documentación. El comportamiento end-user de estas mismas políticas (banner en pantalla de login, mensaje de bloqueo tras 5 intentos, restricción de Panel de Control en Ventas) se documenta como evidencia dentro de los tickets de [`07-Casos-IAM`](../07-Casos-IAM/), no acá.
+Ver [`Evidencias/`](Evidencias/): 8 capturas de consola — el inventario inicial de GPOs más una por cada sección de `politicas.md`, tomadas de cero para esta versión de la documentación. El comportamiento end-user de estas mismas políticas (banner en pantalla de login, mensaje de bloqueo tras 5 intentos, restricción de Panel de Control en Ventas) se documenta como evidencia dentro de los tickets de [`07-Casos-IAM`](../07-Casos-IAM/), no acá.
 
 ---
 
