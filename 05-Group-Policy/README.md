@@ -1,8 +1,6 @@
 # 📜 05 — Group Policy (GPO)
 
-Directivas centralizadas para administración, seguridad y cumplimiento del dominio. Detalle completo de cada configuración en [`politicas.md`](politicas.md).
-
-Las tres GPOs de esta carpeta fueron verificadas contra la consola real de Administración de directivas de grupo — no solo documentadas, sino confirmadas subcategoría por subcategoría en el caso de la auditoría, y con su valor exacto en el caso del bloqueo de pantalla.
+Directivas centralizadas para administración y cumplimiento del dominio. Detalle completo de cada una en [`politicas.md`](politicas.md).
 
 ---
 
@@ -10,29 +8,28 @@ Las tres GPOs de esta carpeta fueron verificadas contra la consola real de Admin
 
 | GPO | Vinculada a | Propósito |
 |---|---|---|
-| Default Domain Policy | Raíz del dominio (`techsolutions.local`) | Banner legal, bloqueo de cuenta (5 intentos / 15 min) y bloqueo de pantalla por inactividad (600 segundos) — las tres configuradas dentro de esta misma GPO |
-| GPO_Restriccion_Ventas | OU `07_Ventas` | Bloqueo del Panel de Control / Configuración para el departamento |
-| GPO_Auditoria_Objetos | OU `Domain Controllers` | Auditoría avanzada: Directory Service Changes, Account Management y Sistema de archivos — ver [`06-Auditoria`](../06-Auditoria/) |
+| Banner legal (`GPO - Windows10 - Banner Legal`) | `TechSolutions/09_Equipos/Windows10` | Mensaje de aviso legal antes del inicio de sesión — solo en equipos cliente Windows 10, no en el DC |
+| Bloqueo de cuenta (`Default Domain Policy`) | Raíz del dominio | Umbral de 5 intentos fallidos, bloqueo de 15 minutos — sin excepción para la cuenta de administrador, misma política sin importar el rango |
+| Restricción por departamento (`GPO_Restriccion_Ventas`) | OU `07_Ventas` (ejemplo) | Bloqueo del Panel de Control / Configuración para el departamento |
+| Bloqueo de pantalla por inactividad (`Default Domain Policy`) | Raíz del dominio | `Inicio de sesión interactivo: límite de inactividad del equipo` = 600 seg (10 min), todo el dominio incluido el DC |
 
 ---
 
-## 🌳 Por qué Default Domain Policy concentra tres directivas distintas
+## 🌳 Por qué Default Domain Policy para el bloqueo de cuenta
 
-Las directivas de cuenta (bloqueo de cuenta, contraseñas) y de seguridad local (mensaje de inicio de sesión, límite de inactividad) solo tienen efecto garantizado si están definidas en una GPO vinculada en la **raíz del dominio** — por eso las tres se configuraron directamente en la Default Domain Policy, en vez de crear GPOs separadas vinculadas a una OU (donde el bloqueo de cuenta, en particular, no habría tenido efecto).
-
-El bloqueo de pantalla en particular usa `Inicio de sesión interactivo: límite de inactividad del equipo` (Directivas locales → Opciones de seguridad) — el mecanismo nativo de seguridad de Windows para forzar el bloqueo tras inactividad, en vez de depender de la configuración de protector de pantalla. Al estar en la raíz del dominio, aplica por herencia a todos los equipos: departamentos, cliente Windows 10, y el propio `DC01`.
+Las directivas de cuenta (bloqueo y contraseñas) solo tienen efecto si están definidas en una GPO vinculada en la **raíz del dominio** — por eso se editó la Default Domain Policy directamente, en vez de crear una GPO nueva vinculada a una OU (donde no habría tenido efecto).
 
 ---
 
-## 🔍 Sobre GPO_Auditoria_Objetos
+## 🔍 Redundancia detectada y corregida
 
-Vinculada específicamente a la OU `Domain Controllers` (no a la raíz del dominio ni a `TechSolutions`), porque las subcategorías de auditoría de Directory Service Changes necesitan aplicarse a nivel de controlador de dominio para generar los eventos correspondientes. Se verificó subcategoría por subcategoría que únicamente están activas *"Auditar cambios de servicio de directorio"* y *"Auditar sistema de archivos"* (ambas en Aciertos y errores), y que *"Auditoría: forzar la configuración de subcategorías..."* está habilitada en Opciones de seguridad, para que la configuración avanzada tenga prioridad sobre cualquier directiva de auditoría básica. Detalle completo de qué genera cada una en [`06-Auditoria`](../06-Auditoria/).
+Una revisión del RSoP del cliente Windows 10 encontró que `GPO - Windows10 - Screen Lock Policy` (vinculada al mismo lugar que el banner, `09_Equipos/Windows10`) duplicaba tanto el aviso legal como el bloqueo por inactividad, este último por un mecanismo clásico (protector de pantalla) distinto al moderno ya definido en Default Domain Policy — mismo valor (600 seg), dos caminos técnicos distintos. Se hizo backup de la GPO y se eliminó tras confirmar que no tenía ninguna otra configuración. Proceso completo con capturas antes/después en [`evidencias/`](evidencias/); razonamiento de la decisión en [`../09-Documentacion/decisiones-de-diseno.md`](../09-Documentacion/decisiones-de-diseno.md) y [`../09-Documentacion/lecciones-aprendidas.md`](../09-Documentacion/lecciones-aprendidas.md).
 
 ---
 
 ## 📸 Evidencias
 
-Ver [`evidencias/`](evidencias/): vínculo de Default Domain Policy en la raíz del dominio, vínculo de GPO_Restriccion_Ventas en `07_Ventas`, vínculo de GPO_Auditoria_Objetos en `Domain Controllers`, banner en pantalla de login, mensaje de bloqueo tras 5 intentos fallidos, restricción del Panel de Control bloqueada en Ventas, configuración del límite de inactividad (600 segundos), y las subcategorías de auditoría avanzada configuradas.
+Ver [`evidencias/`](evidencias/) — 11 capturas: el proceso completo de auditoría y consolidación de GPOs (antes/después, capturas 1-9) más la configuración real de bloqueo de cuenta y restricción de Ventas (capturas 10-11). El comportamiento end-user de estas mismas políticas (banner en pantalla de login, mensaje de bloqueo tras 5 intentos fallidos, restricción del Panel de Control bloqueada en Ventas) se documenta como evidencia dentro de los tickets de [`07-Casos-IAM`](../07-Casos-IAM/), no acá.
 
 ---
 
