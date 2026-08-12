@@ -2,7 +2,7 @@
 
 > Reconstruido desde cero verificando cada GPO directo en la consola. Se documenta GPO por GPO a medida que se confirma.
 
-**Inventario de partida** (5 GPOs en el dominio, confirmado en [`evidencias/00-Inventario-GPOs.png`](evidencias/00-Inventario-GPOs.png)): `Default Domain Controllers Policy` (fuera de alcance, sin configuración custom), `Default Domain Policy` (secciones 3 y 4, y el hallazgo), `GPO - Windows10 - Banner Legal` (sección 1), `GPO_Auditoria_Objetos` (fuera de alcance — ver [`06-Auditoria`](../06-Auditoria/)), `GPO_Restriccion_Ventas` (sección 2).
+**Inventario de partida** (5 GPOs en el dominio, confirmado en [`evidencias/00-Inventario-GPOs.png`](evidencias/00-Inventario-GPOs.png)): `Default Domain Controllers Policy` (fuera de alcance, sin configuración custom), `Default Domain Policy` (secciones 3 y 4), `GPO - Windows10 - Banner Legal` (sección 1), `GPO_Auditoria_Objetos` (fuera de alcance — ver [`06-Auditoria`](../06-Auditoria/)), `GPO_Restriccion_Ventas` (sección 2).
 
 ---
 
@@ -25,7 +25,7 @@
 | Título del mensaje | `Bienvenido a TechSolutions S.A.` |
 | Texto del mensaje | Este equipo es propiedad de TechSolutions S.A. El acceso está permitido únicamente a personal autorizado. Toda actividad realizada en este equipo puede ser registrada, supervisada y auditada conforme a las políticas de seguridad de la organización. Si usted no está autorizado, cierre esta sesión inmediatamente. |
 
-**Alcance de esta GPO puntual:** aplica a los equipos cliente Windows 10 dentro de `09_Equipos/Windows10` (no está vinculada en la raíz). El DC también termina recibiendo un banner, pero por una fuente distinta — ver el hallazgo de duplicación al final de este documento (sección "⚠️ Hallazgo").
+**Alcance real:** aplica a los equipos cliente Windows 10 dentro de `09_Equipos/Windows10` (no está vinculada en la raíz del dominio).
 
 **Evidencia:** [`evidencias/01-Banner-Legal-Ambito.png`](evidencias/01-Banner-Legal-Ambito.png), [`evidencias/02-Banner-Legal-Configuracion.png`](evidencias/02-Banner-Legal-Configuracion.png).
 
@@ -93,23 +93,4 @@ La cuenta `Administrador` local queda sujeta a la misma directiva de bloqueo que
 
 **Vínculo:** raíz del dominio (`techsolutions.local`) — ver Ámbito en la sección 3, misma GPO. **Alcance:** todo el dominio, incluido el DC.
 
-**Evidencia:** [`evidencias/08-Limite-Inactividad-600s.png`](evidencias/08-Limite-Inactividad-600s.png).
-
----
-
-## ⚠️ Hallazgo: banner duplicado también dentro de Default Domain Policy
-
-Al revisar la Configuración completa de `Default Domain Policy` apareció **un tercer lugar** con el mismo banner de inicio de sesión ya documentado en la sección 1:
-
-| Directiva | Configuración |
-|---|---|
-| Inicio de sesión interactivo: título del mensaje | `Bienvenido a TechSolutions S.A.` |
-| Inicio de sesión interactivo: texto del mensaje | Idéntico, palabra por palabra, al de `GPO - Windows10 - Banner Legal` |
-
-Como `Default Domain Policy` está vinculada en la **raíz del dominio**, este banner sí llega a todos los equipos, incluido el DC — lo que además corrige lo que se dijo en la sección 1 ("no aplica al DC"): en realidad **sí llega**, solo que por esta GPO, no por `Banner Legal`.
-
-Con esto, `GPO - Windows10 - Banner Legal` (vinculada solo a `09_Equipos/Windows10`) queda redundante: cualquier equipo de esa OU ya recibe el mismo banner, con el mismo texto, desde la raíz. Es el mismo patrón de redundancia que ya se resolvió con `GPO - Windows10 - Screen Lock Policy`.
-
-**Evidencia:** [`evidencias/07-Banner-Duplicado-Default-Domain-Policy.png`](evidencias/07-Banner-Duplicado-Default-Domain-Policy.png).
-
-**Decisión:** por ahora se deja documentado tal cual está en la consola (banner duplicado, sin conflicto funcional porque el texto es idéntico) y se sigue con el resto de la documentación. Queda pendiente para una pasada de consolidación posterior — mismo criterio que en su momento se aplicó con `Screen Lock Policy`.
+**Evidencia:** [`evidencias/07-Limite-Inactividad-600s.png`](evidencias/07-Limite-Inactividad-600s.png).
