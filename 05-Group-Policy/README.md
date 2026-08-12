@@ -22,12 +22,6 @@ Las directivas de cuenta (bloqueo y contraseñas) solo tienen efecto real si est
 
 ---
 
-## ⚠️ Redundancia de banner — pendiente de consolidación
-
-`Default Domain Policy` (raíz del dominio, cubre todo incluido el DC) y `GPO - Windows10 - Banner Legal` (solo `09_Equipos/Windows10`) tienen configurado el **mismo banner de inicio de sesión**, texto idéntico. No hay conflicto funcional, pero es la misma redundancia que ya se resolvió una vez con `GPO - Windows10 - Screen Lock Policy` (ver [`../09-Documentacion/lecciones-aprendidas.md`](../09-Documentacion/lecciones-aprendidas.md)). Se documentó tal cual está y se dejó la consolidación para una pasada posterior — detalle y opciones en [`politicas.md`](politicas.md).
-
----
-
 ## 📸 Evidencias
 
 Ver [`evidencias/`](evidencias/): 9 capturas de consola — el inventario inicial de GPOs más una por cada sección de `politicas.md`, tomadas de cero para esta versión de la documentación. El comportamiento end-user de estas mismas políticas (banner en pantalla de login, mensaje de bloqueo tras 5 intentos, restricción de Panel de Control en Ventas) se documenta como evidencia dentro de los tickets de [`07-Casos-IAM`](../07-Casos-IAM/), no acá.
