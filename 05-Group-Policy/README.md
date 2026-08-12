@@ -12,7 +12,7 @@ Inventario completo del dominio (5 GPOs, [`evidencias/00-Inventario-GPOs.png`](e
 |---|---|---|
 | `GPO - Windows10 - Banner Legal` | `TechSolutions/09_Equipos/Windows10` | Aviso legal antes del inicio de sesión en equipos cliente Windows 10 |
 | `GPO_Restriccion_Ventas` | OU `07_Ventas` | Bloquea el acceso a Configuración de PC y Panel de control para ese departamento |
-| `Default Domain Policy` | Raíz del dominio | Bloqueo de cuenta (5 intentos / 15 min, sin excepción de rango) + bloqueo de pantalla por inactividad (600 seg) + banner legal (ver hallazgo abajo) |
+| `Default Domain Policy` | Raíz del dominio | Bloqueo de cuenta (5 intentos / 15 min, sin excepción de rango) + bloqueo de pantalla por inactividad (600 seg) |
 
 ---
 
@@ -24,7 +24,7 @@ Las directivas de cuenta (bloqueo y contraseñas) solo tienen efecto real si est
 
 ## 📸 Evidencias
 
-Ver [`evidencias/`](evidencias/): 9 capturas de consola — el inventario inicial de GPOs más una por cada sección de `politicas.md`, tomadas de cero para esta versión de la documentación. El comportamiento end-user de estas mismas políticas (banner en pantalla de login, mensaje de bloqueo tras 5 intentos, restricción de Panel de Control en Ventas) se documenta como evidencia dentro de los tickets de [`07-Casos-IAM`](../07-Casos-IAM/), no acá.
+Ver [`evidencias/`](evidencias/): 8 capturas de consola — el inventario inicial de GPOs más una por cada sección de `politicas.md`, tomadas de cero para esta versión de la documentación. El comportamiento end-user de estas mismas políticas (banner en pantalla de login, mensaje de bloqueo tras 5 intentos, restricción de Panel de Control en Ventas) se documenta como evidencia dentro de los tickets de [`07-Casos-IAM`](../07-Casos-IAM/), no acá.
 
 ---
 
