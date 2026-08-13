@@ -13,8 +13,8 @@ Siete casos operativos resueltos siguiendo un formato de ticket, replicando el t
 | 3 | Leaver (baja de usuario) | María López | [`03-Leaver`](03-Leaver/) |
 | 4 | Reset Password | Belen Ruiz | [`04-Reset-Password`](04-Reset-Password/) |
 | 5 | Unlock Account | Belen Ruiz | [`05-Unlock-Account`](05-Unlock-Account/) |
-| 6 | Disable vs. Delete User | Cuenta de prueba | [`06-Disable-Delete-User`](06-Disable-Delete-User/) |
-| 7 | Delegación de permisos | Equipo de Helpdesk (IT) | [`07-Delegacion-Permisos`](07-Delegacion-Permisos/) |
+| 6 | Disable vs. Delete User | Cuenta de prueba | [`06-Eliminacion-de-Cuenta`](06-Eliminacion-de-Cuenta/) |
+| 7 | Delegación de permisos | Equipo de Helpdesk (IT) | [`07-Delegacion-de-Permisos`](07-Delegacion-de-Permisos/) |
 
 ---
 
