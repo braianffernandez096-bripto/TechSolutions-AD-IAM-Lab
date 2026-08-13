@@ -25,7 +25,7 @@
 
 ## 💡 Por qué deshabilitar y no eliminar
 
-Deshabilitar es reversible y corta el acceso al instante. Eliminar es irreversible y se reserva para después de un período de retención — ver el análisis completo en el [Caso 6](../06-Disable-Delete-User/).
+Deshabilitar es reversible y corta el acceso al instante. Eliminar es irreversible y se reserva para después de un período de retención — ver el análisis completo en el [Caso 6](../06-Eliminacion-de-Cuenta/).
 
 ---
 
