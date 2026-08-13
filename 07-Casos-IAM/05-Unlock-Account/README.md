@@ -14,7 +14,7 @@
 
 ---
 
-> Continuidad con el [Caso 4](../04-Reset-Password/): es la misma usuaria (Belen Ruiz) a la que se le había restablecido la contraseña un día antes. El bloqueo es consecuencia directa de eso — probó varias veces la contraseña nueva sin recordarla bien, hasta activar el umbral de bloqueo.
+> Continuidad con el [Caso 4](../04-Restablecer-pass/): es la misma usuaria (Belen Ruiz) a la que se le había restablecido la contraseña un día antes. El bloqueo es consecuencia directa de eso — probó varias veces la contraseña nueva sin recordarla bien, hasta activar el umbral de bloqueo.
 
 ## 🛠️ Pasos de resolución
 
