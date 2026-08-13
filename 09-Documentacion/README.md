@@ -10,7 +10,6 @@ Cierre del proyecto: la arquitectura general, el registro de decisiones de dise�
 |---|---|
 | [`arquitectura.md`](arquitectura.md) | Diagrama lógico del dominio, flujo de autenticación y acceso (Kerberos → token de grupo → Share + NTFS), y los componentes principales. |
 | [`decisiones-de-diseno.md`](decisiones-de-diseno.md) | Por qué AGDLP, por qué 13 OUs, por qué el share queda permisivo y el control real está en NTFS, por qué auditoría diferenciada en Dirección, y otras decisiones clave con su justificación. |
-| [`lecciones-aprendidas.md`](lecciones-aprendidas.md) | Problemas reales encontrados durante el proyecto (auditoría con subcategorías independientes, GPOs no retroactivas, RSoP detectando GPOs redundantes, entre otros) y cómo se diagnosticaron y resolvieron. |
 
 ---
 
