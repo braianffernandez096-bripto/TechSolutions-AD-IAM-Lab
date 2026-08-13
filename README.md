@@ -106,9 +106,3 @@ Laboratorio de IAM + Active Directory (carpetas `01` a `08`): **completo**.
 Documentación de cierre (`09-Documentacion`) en curso.
 
 Próximo paso: proyecto de Soporte IT con Jira, construido sobre este mismo entorno (ver [`10-Service-Desk`](10-Service-Desk/)).
-
----
-
-## 👤 Autor
-
-Brian — [agregá tu perfil de LinkedIn / contacto acá]
