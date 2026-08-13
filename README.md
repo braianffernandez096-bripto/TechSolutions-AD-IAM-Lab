@@ -79,7 +79,7 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 | [`06-Auditoria`](06-Auditoria/) | Auditoría de archivos y de objetos de Active Directory |
 | [`07-Casos-IAM`](07-Casos-IAM/) | 7 casos reales resueltos: Joiner, Mover, Leaver, Reset Password, Unlock Account, Disable/Delete User, Delegación de permisos |
 | [`08-PowerShell`](08-PowerShell/) | Scripts de automatización (alta masiva, reporte de bajas) |
-| [`09-Documentacion`](09-Documentacion/) | Arquitectura, decisiones de diseño y lecciones aprendidas |
+| [`09-Documentacion`](09-Documentacion/) | Arquitectura, decisiones de diseño |
 | [`10-Service-Desk`](10-Service-Desk/) | Próximo proyecto — Mesa de ayuda con Jira sobre este mismo entorno (no iniciado) |
 
 ---
