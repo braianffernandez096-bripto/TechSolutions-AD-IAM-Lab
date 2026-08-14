@@ -6,8 +6,10 @@
 ![PowerShell](https://img.shields.io/badge/PowerShell-Automatización-blue)
 ---
 ## 📌 Descripción
-Este proyecto consiste en la implementación de un laboratorio empresarial de **Active Directory e Identity and Access Management (IAM)** utilizando **Windows Server 2022**.
+Este proyecto consiste en la implementación de un laboratorio empresarial de Active Directory e Identity and Access Management (IAM) utilizando Windows Server 2022.
+
 El objetivo principal fue simular un entorno corporativo en el que se gestionan identidades, accesos, grupos, equipos, políticas de seguridad, recursos compartidos y procesos completos del ciclo de vida de los usuarios.
+
 El laboratorio fue diseñado y validado en un entorno virtualizado, reproduciendo procedimientos habituales de administración de sistemas, soporte IT e IAM.
 ---
 ## 🎯 Objetivos del proyecto
