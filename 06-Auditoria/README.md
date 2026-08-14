@@ -78,8 +78,8 @@ El sistema de auditoría queda demostrado en funcionamiento de dos formas: los E
 
 | # | Captura | Qué muestra |
 |---|---|---|
-| 1 | [`01-Evento-4720-Cuenta-Creada`](Evidencias/01-Evento-4720-Cuenta-Creada) | Event ID 4720 — creación de la cuenta `mlopez`, sujeto `TECHSOLUTIONS\Administrador`. |
-| 2 | [`02-Evento-4722-Cuenta-Habilitada`](Evidencias/02-Evento-4722-Cuenta-Habilitada) | Event ID 4722 — habilitación de la cuenta `mlopez`. |
-| 3 | [`03-Evento-4728-Alta-en-Grupo`](Evidencias/03-Evento-4728-Alta-en-Grupo) | Event ID 4728 — alta de `mlopez` como miembro de un grupo global. |
-| 4 | [`04-Evento-4725-Cuenta-Deshabilitada`](Evidencias/04-Evento-4725-Cuenta-Deshabilitada) | Event ID 4725 — deshabilitación de la cuenta `mlopez`. |
-| 5 | [`05-Evento-4738-Cuenta-Modificada`](Evidencias/05-Evento-4738-Cuenta-Modificada) | Event ID 4738 — modificación de la cuenta `mlopez`. |
+| 1 | [`01-Evento-4720-Cuenta-Creada.png`](Evidencias/01-Evento-4720-Cuenta-Creada.png) | Event ID 4720 — creación de la cuenta `mlopez`, sujeto `TECHSOLUTIONS\Administrador`. |
+| 2 | [`02-Evento-4722-Cuenta-Habilitada.png`](Evidencias/02-Evento-4722-Cuenta-Habilitada.png) | Event ID 4722 — habilitación de la cuenta `mlopez`. |
+| 3 | [`03-Evento-4728-Alta-en-Grupo.png`](Evidencias/03-Evento-4728-Alta-en-Grupo.png) | Event ID 4728 — alta de `mlopez` como miembro de un grupo global. |
+| 4 | [`04-Evento-4725-Cuenta-Deshabilitada.png`](Evidencias/04-Evento-4725-Cuenta-Deshabilitada.png) | Event ID 4725 — deshabilitación de la cuenta `mlopez`. |
+| 5 | [`05-Evento-4738-Cuenta-Modificada.png`](Evidencias/05-Evento-4738-Cuenta-Modificada.png) | Event ID 4738 — modificación de la cuenta `mlopez`. |
