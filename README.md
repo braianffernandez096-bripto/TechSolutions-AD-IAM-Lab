@@ -11,7 +11,9 @@ Este proyecto consiste en la implementación de un laboratorio empresarial de Ac
 El objetivo principal fue simular un entorno corporativo en el que se gestionan identidades, accesos, grupos, equipos, políticas de seguridad, recursos compartidos y procesos completos del ciclo de vida de los usuarios.
 
 El laboratorio fue diseñado y validado en un entorno virtualizado, reproduciendo procedimientos habituales de administración de sistemas, soporte IT e IAM.
+
 ---
+
 ## 🎯 Objetivos del proyecto
 - Implementar un dominio empresarial con Active Directory Domain Services.
 - Diseñar una estructura organizada de Unidades Organizativas (OU).
