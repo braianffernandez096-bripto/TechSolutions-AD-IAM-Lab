@@ -34,7 +34,7 @@ El usuario se creó inicialmente por error en la OU `02_RRHH` en lugar de `06_Ma
 - ✅ Acceso concedido a `\\DC01\Compartidos\Marketing`.
 - ✅ Acceso denegado a otra carpeta de departamento (ej. Ciberseguridad).
 
-# 📸 Evidencias — Caso 1 (Joiner)
+# 📸 Evidencias
 
 | # | Captura | Qué muestra |
 |---|---|---|
@@ -49,9 +49,4 @@ El usuario se creó inicialmente por error en la OU `02_RRHH` en lugar de `06_Ma
 | 9 | [`09-Primer-Login-Cambio-Contrasena-Obligatorio.png`](09-Primer-Login-Cambio-Contrasena-Obligatorio.png) | "Se debe cambiar la contraseña del usuario antes de iniciar sesión" — confirma que el forzado de cambio funcionó en la práctica, no solo en la configuración. |
 | 10 | [`10-Acceso-Concedido-Marketing.png`](10-Acceso-Concedido-Marketing.png) | `\\DC01\Compartidos\Marketing` accesible sin error (carpeta vacía, pero navega sin bloqueo). |
 | 11 | [`11-Acceso-Denegado-Ciberseguridad.png`](11-Acceso-Denegado-Ciberseguridad.png) | `\\DC01\Compartidos\Ciberseguridad` — "Windows no puede obtener acceso", confirma que el acceso está acotado solo al departamento de María. |
-
----
-
-## ⚠️ Sin evidencia visual: Event ID 5137
-
 El `README.md` del caso menciona el Event ID 5137 como evidencia de auditoría, pero no hay una captura que lo respalde con certeza. Se intentó tomar una, pero el campo GUID mostraba una ruta de OU en vez de un GUID real (probable problema de scroll en el panel del Visor de eventos) y el DN correspondía a `OU=02_RRHH` — coincide con la corrección de OU del caso, no confirma el alta final. Se decidió no forzar una captura dudosa; queda como evidencia pendiente de tomar correctamente más adelante, filtrando por Event ID 5137 y confirmando el DN final (`OU=06_Marketing`) antes de guardarla.
