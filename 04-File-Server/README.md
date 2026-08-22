@@ -75,13 +75,13 @@ C:\Compartidos
 
 La carpeta raíz `Compartidos` se compartió con permisos de recurso compartido (Share Permissions) amplios — el control de acceso real se hace a nivel NTFS, no a nivel de recurso compartido. Ver el detalle de la diferencia entre ambos en [`share-permissions.md`](share-permissions.md).
 
-> ⚠️ **Hallazgo corregido:** durante la validación con `Get-SmbShare` se detectó que las 8 carpetas de departamento habían quedado compartidas también de forma individual, además de la raíz — un resto de la configuración inicial, sin impacto real en el acceso (el NTFS seguía siendo el permiso efectivo) pero inconsistente con el diseño de un único punto de entrada. Se corrigió dando de baja esos 8 recursos con `Remove-SmbShare`. Detalle completo en [`09-Documentacion/lecciones-aprendidas.md`](../09-Documentacion/lecciones-aprendidas.md).
+> ⚠️ **Hallazgo corregido:** durante la validación con `Get-SmbShare` se detectó que las 8 carpetas de departamento habían quedado compartidas también de forma individual, además de la raíz — un resto de la configuración inicial, sin impacto real en el acceso (el NTFS seguía siendo el permiso efectivo) pero inconsistente con el diseño de un único punto de entrada. Se corrigió dando de baja esos 8 recursos con `Remove-SmbShare`.
 
 ---
 
 ## 🔐 Permisos NTFS por carpeta
 
-Cada subcarpeta se configuró siguiendo el mismo proceso, documentado paso a paso en [`permisos-ntfs.md`](permisos-ntfs.md):
+Cada subcarpeta se configuró siguiendo el mismo proceso:
 
 1. Asignar al grupo `DL_<Departamento>_RW` con permiso **Modificar**.
 2. Deshabilitar la herencia y convertir los permisos heredados en explícitos.
