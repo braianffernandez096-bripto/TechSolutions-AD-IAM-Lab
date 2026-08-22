@@ -101,7 +101,7 @@ Para cada departamento se validó, desde el cliente Windows 10:
 
 ## 📸 Evidencias
 
-Ver [`evidencias/README.md`](evidencias/README.md) para el detalle completo: estructura, configuración del recurso compartido, permisos NTFS, acceso concedido/denegado, prueba de eliminación, y la verificación final de recursos compartidos activos.
+Ver [`Evidencias/README.md`](Evidencias/README.md) para el detalle completo: estructura, configuración del recurso compartido, permisos NTFS, acceso concedido/denegado, prueba de eliminación, y la verificación final de recursos compartidos activos.
 
 ---
 
