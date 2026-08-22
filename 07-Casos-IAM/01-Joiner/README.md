@@ -20,11 +20,6 @@
 3. **Datos organizacionales**: pestaña Organización → Puesto, Departamento, Manager.
 4. **Grupo**: pestaña Miembro de → agregar `GG_Marketing`.
 
----
-
-## 🔄 Corrección durante el proceso
-
-El usuario se creó inicialmente por error en la OU `02_RRHH` en lugar de `06_Marketing`. Se detectó al revisar el DN del objeto y se corrigió moviendo el usuario a la OU correcta — el acceso a la carpeta ya funcionaba igual (depende del grupo `GG_Marketing`, no de la OU), pero la ubicación en el directorio importa para la organización general y para que las GPOs vinculadas por departamento apliquen correctamente.
 
 ---
 
