@@ -59,7 +59,3 @@ Los grupos de seguridad fueron centralizados en la OU `11_Grupos`, diferenciando
 Los usuarios fueron ubicados dentro de las OUs correspondientes a sus departamentos, permitiendo posteriormente asociarlos a los grupos globales correspondientes.
 
 ![Organización de usuarios](Evidencias/04-Organización-Usuarios.png)
-El dominio utilizado en el laboratorio es:
-
-```text
-techsolutions.local
