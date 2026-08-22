@@ -81,7 +81,7 @@ La carpeta raíz `Compartidos` se compartió con permisos de recurso compartido 
 
 ## 🔐 Permisos NTFS por carpeta
 
-Cada subcarpeta se configuró siguiendo el mismo proceso:
+Cada subcarpeta se configuró siguiendo el mismo proceso, documentado paso a paso en [`permisos-ntfs.md`](permisos-ntfs.md):
 
 1. Asignar al grupo `DL_<Departamento>_RW` con permiso **Modificar**.
 2. Deshabilitar la herencia y convertir los permisos heredados en explícitos.
