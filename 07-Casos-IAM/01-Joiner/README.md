@@ -29,7 +29,7 @@
 - ✅ Acceso concedido a `\\DC01\Compartidos\Marketing`.
 - ✅ Acceso denegado a otra carpeta de departamento (ej. Ciberseguridad).
 
-# 📸 Evidencias
+## 📸 Evidencias
 
 | # | Captura | Qué muestra |
 |---|---|---|
