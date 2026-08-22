@@ -26,6 +26,6 @@ Cada carpeta contiene un `README.md` con:
 2. **🛠️ Pasos de resolución** — la acción tomada en Active Directory.
 3. **✅ Validación** — prueba de que la resolución funcionó (y, cuando aplica, prueba de que el acceso quedó correctamente acotado).
 4. **🔍 Evidencia de auditoría** — el Event ID correspondiente, demostrando trazabilidad de quién ejecutó la acción.
-5. **📸 Evidencias** — capturas numeradas y nombradas, listadas en una tabla al final del README. El Caso 1 las tiene en su propia subcarpeta `Evidencias/` (convención inicial); del Caso 2 en adelante las capturas viven directo en la carpeta del caso, sin subcarpeta.
+5. 5. **📸 Evidencias** — capturas numeradas y nombradas, listadas en una tabla al final del README, sueltas directo en la carpeta de cada caso.
 
 Este formato está pensado para conectar directamente con el próximo proyecto ([`10-Service-Desk`](../10-Service-Desk/)), donde estos mismos procesos se van a gestionar formalmente vía Jira.
