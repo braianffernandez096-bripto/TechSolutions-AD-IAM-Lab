@@ -1,4 +1,4 @@
-# 🎫 07 — Casos reales de IAM
+## 🎫 07 — Casos reales de IAM
 
 Siete casos operativos resueltos siguiendo un formato de ticket, replicando el trabajo diario de un administrador de IAM. Los primeros tres comparten protagonista para dar continuidad narrativa al ciclo de vida completo de un empleado: **María López**, quien ingresa a Marketing, es promovida a Ventas, y finalmente se desvincula de la empresa. Los Casos 4 y 5 comparten su propia continuidad menor: **Belen Ruiz**, a quien se le restablece la contraseña y al día siguiente se le bloquea la cuenta por probar esa contraseña nueva sin recordarla bien — más dos casos operativos independientes (6 y 7).
 
