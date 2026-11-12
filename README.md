@@ -55,6 +55,9 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
                               │ NTFS / Recursos │
                               └─────────────────┘
 ```
+
+> Las OUs de equipos (`Windows10`, `Windows11`, `Laptops` y `Servidores`) están creadas en `09_Equipos` / `10_Servidores`; hoy el laboratorio tiene un cliente Windows 10 unido al dominio.
+
 ---
 ## 🗂️ Índice
 | Carpeta | Contenido |
