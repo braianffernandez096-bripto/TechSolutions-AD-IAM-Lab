@@ -49,4 +49,15 @@ Acceso concedido solo si el usuario pertenece al GG correspondiente
 | `C:\Compartidos` | Recurso compartido con estructura por departamento |
 | GPOs | Banner legal, bloqueo de cuenta, restricciones, auditoría |
 
-Diagrama de red físico/topológico: agregar imagen propia en `../02-Active-Directory/evidencias/` o en esta misma carpeta si se genera uno.
+---
+
+## 🌐 Topología de red
+
+```
+Host físico (VMware)
+ └── Red privada de laboratorio · 192.168.x.0/24 · máscara 255.255.255.0
+      ├── DC01 · Windows Server 2022 · AD DS + DNS + GPO + File Server
+      └── Cliente Windows 10 · unido a techsolutions.local
+```
+
+Las direcciones IP están parcialmente ocultas en las capturas de [`01-Infraestructura`](../01-Infraestructura/).
