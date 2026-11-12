@@ -87,3 +87,10 @@ Recurso compartido
    │
    ▼
 Permisos NTFS
+```
+
+---
+
+## 🚀 Siguiente paso
+
+Con el modelo AGDLP definido, se aplicó sobre un servidor de archivos real — ver [`04-File-Server`](../04-File-Server/).
