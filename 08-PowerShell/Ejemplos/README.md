@@ -17,4 +17,4 @@ Sofia,Torres,storres,IT,Soporte Técnico,04_IT
 Martin,Gimenez,mgimenez,Operaciones,Analista de Operaciones,08_Operaciones
 ```
 
-> Nota: acá `OU` viene como `04_IT` (un solo nivel), no `04_IT/HelpDesk`. Con ese valor el script arma la ruta como `OU=04_IT,OU=TechSolutions,...` — deja al usuario directo en `04_IT`, no en la sub-OU `HelpDesk`. Si la corrida real dejó usuarios dentro de `HelpDesk`, el CSV completo (no este ejemplo reducido) debió traer un valor de `OU` distinto para esas filas — no tengo ese archivo completo para confirmarlo, así que lo dejo señalado en vez de asumirlo.
+> **Nota sobre la columna `OU`:** el script arma la ruta como `OU=<valor>,OU=TechSolutions,DC=techsolutions,DC=local`. Con `04_IT` el usuario queda directamente en `04_IT`. Para ubicarlo en una sub-OU como `04_IT/HelpDesk`, el valor debe indicar la ruta de adentro hacia afuera: `HelpDesk,OU=04_IT`.
