@@ -34,14 +34,14 @@ El paso crítico de este caso no es solo confirmar el acceso nuevo — es confir
 ## 🔍 Evidencia de auditoría
 
 - **Event ID 5139** — objeto movido de OU (`Anterior DN: OU=06_Marketing` → `Nuevo DN: OU=07_Ventas`). Confirmado.
-- **Event ID 5136** — modificación de propiedades (Puesto, Departamento). **Pendiente** — no se tomó la captura en su momento; queda como evidencia a completar más adelante.
+- **Event ID 5136** — modificación de propiedades (Puesto, Departamento). No se tomó la captura en el momento del caso, así que se **reprodujo después** con un usuario de prueba (`tmover`, el 24/11/2026) ejecutando el mismo cambio. El evento muestra el valor nuevo agregado (`Ventas`) y el anterior eliminado (`Marketing`), vinculados por el mismo Id. de correlación. Como el cambio se hizo con la cuenta de administración nominal, el sujeto es `adm.bfernandez` y no `Administrador`.
 - **Event ID 4728 / 4729** — alta y baja de membresía de grupo. En el momento de este caso, la subcategoría "Administración de grupos de seguridad" todavía no estaba habilitada, así que estos dos no quedaron registrados para este movimiento puntual. Se habilitó recién en el Caso 3 — a partir de ahí, cualquier alta/baja de grupo nueva sí genera estos eventos.
 
 ---
 
 ## 📸 Evidencias
 
-10 capturas, numeradas directo en esta carpeta (sin subcarpeta `Evidencias/`):
+12 capturas, numeradas directo en esta carpeta (sin subcarpeta `Evidencias/`):
 
 | # | Captura | Qué muestra |
 |---|---|---|
@@ -55,3 +55,5 @@ El paso crítico de este caso no es solo confirmar el acceso nuevo — es confir
 | 8 | [`08-Acceso-Concedido-Ventas.png`](08-Acceso-Concedido-Ventas.png) | `\\DC01\Compartidos\Ventas` accesible. |
 | 9 | [`09-Acceso-Denegado-Marketing.png`](09-Acceso-Denegado-Marketing.png) | `\\DC01\Compartidos\Marketing` — acceso denegado. |
 | 10 | [`10-Evento-Auditoria-5139.png`](10-Evento-Auditoria-5139.png) | Evento 5139 con el DN anterior y nuevo. |
+| 11 | [`11-Evento-Auditoria-5136-Departamento-Agregado.png`](11-Evento-Auditoria-5136-Departamento-Agregado.png) | Evento 5136 (reproducción con usuario de prueba) — `department` con valor agregado `Ventas`. |
+| 12 | [`12-Evento-Auditoria-5136-Departamento-Eliminado.png`](12-Evento-Auditoria-5136-Departamento-Eliminado.png) | Evento 5136 — `department` con valor eliminado `Marketing`, mismo Id. de correlación. |

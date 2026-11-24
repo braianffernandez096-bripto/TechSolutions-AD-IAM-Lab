@@ -47,4 +47,6 @@ Tras `gpupdate /force` y reinicio del cliente, el mismo nombre inexistente ya no
 
 ![Re-test: Responder escuchando, sin respuestas envenenadas ni capturas](Evidencias/06-Retest-Responder-Sin-Eventos.png)
 
-> **Pendiente:** agregar el resultado de hashcat sobre los hashes de `ptorres` (Cracked o Exhausted).
+**Resultado de hashcat sobre los hashes de `ptorres`: ninguna contraseña recuperada** (`--show` no devuelve nada, con rockyou y la regla de variaciones).
+
+![Resultado hashcat](Evidencias/08-Hashcat-5600-Resultado.png)

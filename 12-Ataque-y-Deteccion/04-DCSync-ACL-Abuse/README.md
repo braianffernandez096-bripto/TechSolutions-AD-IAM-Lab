@@ -49,4 +49,6 @@ La replicación pedida desde la cuenta sin derechos falla. `krbtgt` muestra `msD
 
 ![Reset de krbtgt: msDS-KeyVersionNumber = 4](Evidencias/07-Reset-krbtgt-KVNO.png)
 
-> **Pendiente:** captura del re-test (el intento de replicación fallando tras la remediación).
+**Re-test: la replicación falla con la cuenta sin derechos (credenciales difuminadas)**
+
+![Re-test del DCSync](Evidencias/09-Retest-Falla.png)

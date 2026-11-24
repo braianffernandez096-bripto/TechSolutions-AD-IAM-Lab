@@ -43,13 +43,13 @@ Tres eventos capturados, en el mismo orden cronológico en que ocurrieron (20:51
 - **Event ID 5139** — objeto movido de OU (`Anterior DN: OU=07_Ventas` → `Nuevo DN: OU=13_Disabled_Users`). Confirmado.
 - **Event ID 5136** — modificación de propiedades (descripción del motivo de baja). Confirmado, con el DN ya en `OU=13_Disabled_Users`.
 
-**Event ID 4725** ("se deshabilitó una cuenta de usuario") — **no capturado**. Es el evento más directo para este paso puntual pero no se tomó la captura; queda pendiente para completar la trazabilidad de punta a punta.
+**Event ID 4725** — se deshabilitó la cuenta de usuario (`mlopez`), con el sujeto que ejecutó la acción. Capturado después, consultando el log de seguridad del DC (la hora que muestra es la de la VM al momento de la consulta).
 
 ---
 
 ## 📸 Evidencias
 
-12 capturas, numeradas directo en esta carpeta (sin subcarpeta `Evidencias/`):
+13 capturas, numeradas directo en esta carpeta (sin subcarpeta `Evidencias/`):
 
 | # | Captura | Qué muestra |
 |---|---|---|
@@ -65,3 +65,4 @@ Tres eventos capturados, en el mismo orden cronológico en que ocurrieron (20:51
 | 10 | [`10-Evento-Auditoria-5139-Movimiento-OU.png`](10-Evento-Auditoria-5139-Movimiento-OU.png) | Evento 5139 — movimiento de OU. |
 | 11 | [`11-Evento-Auditoria-5136-Cambio-Propiedades.png`](11-Evento-Auditoria-5136-Cambio-Propiedades.png) | Evento 5136 — cambio de descripción. |
 | 12 | [`12-Login-Cuenta-Deshabilitada.png`](12-Login-Cuenta-Deshabilitada.png) | Validación final: login rechazado. |
+| 13 | [`13-Evento-Auditoria-4725-Cuenta-Deshabilitada.png`](13-Evento-Auditoria-4725-Cuenta-Deshabilitada.png) | Evento 4725 — deshabilitación de `mlopez` por `TECHSOLUTIONS\Administrador`. |

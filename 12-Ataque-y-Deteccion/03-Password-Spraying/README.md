@@ -41,4 +41,6 @@ Tras restablecer la cuenta débil y aplicar las políticas, el spray no obtiene 
 
 ![Detección: 97 fallos desde una IP contra 91 usuarios distintos, y logon tipo 3 posteriores](Evidencias/03-Deteccion-4625-Agrupado-por-IP.png)
 
-> **Pendiente:** repetir el spray tras cambiar la contraseña débil y agregar la captura del resultado.
+**Re-test: el mismo spray tras cambiar la contraseña débil, 0 aciertos**
+
+![Re-test del spray](Evidencias/06-Retest-Spray-Sin-Aciertos.png)
