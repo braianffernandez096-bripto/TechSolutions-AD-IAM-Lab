@@ -112,6 +112,8 @@ Se agregaron después de la auditoría con PingCastle (ver [`11-Hardening-PingCa
 | Tamaño del log Security | 512 MB |
 | Auditoría de línea de comandos en creación de procesos (4688) | Habilitada |
 
+![Informe de la GPO SEC-DC-Auditoria-Avanzada](Evidencias/08-GPO-SEC-DC-Auditoria-Avanzada.gif)
+
 Además se configuró una **SACL en la raíz del dominio** para auditar los derechos extendidos de replicación (evento 4662).
 
 ## 6️⃣ `SEC-Dominio-Hardening`
@@ -130,6 +132,8 @@ Además se configuró una **SACL en la raíz del dominio** para auditar los dere
 Set-GPRegistryValue -Name "SEC-Dominio-Hardening" -Key "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" -ValueName EnableMulticast -Type DWord -Value 0
 Set-GPRegistryValue -Name "SEC-Dominio-Hardening" -Key "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" -ValueName EnableMDNS -Type DWord -Value 0
 ```
+
+**Evidencia:** [`Evidencias/08-GPO-SEC-DC-Auditoria-Avanzada.gif`](Evidencias/08-GPO-SEC-DC-Auditoria-Avanzada.gif) (informe HTML de la GPO) y capturas en [`11-Hardening-PingCastle/Evidencias`](../11-Hardening-PingCastle/Evidencias/).
 
 ## 7️⃣ `SEC-LAPS-Estaciones`
 

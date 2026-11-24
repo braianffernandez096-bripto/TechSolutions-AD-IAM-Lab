@@ -35,12 +35,18 @@ La delegación legítima de Helpdesk (`SG_Delegados_Helpdesk`, ver [Caso 7](../.
 ## ✅ Re-test
 La replicación pedida desde la cuenta sin derechos falla. `krbtgt` muestra `msDS-KeyVersionNumber` incrementado (KVNO 4).
 
-## 📸 Evidencias (`Evidencias/`)
-| Archivo | Muestra |
-|---|---|
-| `01-ACL-Excesiva.png` | Permiso excesivo detectado |
-| `02-Evento-5136.png` | Cambio de DACL |
-| `03-Evento-4662-GUIDs.png` | Acceso de replicación |
-| `04-Remediacion-dsacls.png` | ACL removida |
-| `05-Reset-krbtgt-KVNO.png` | Doble reset |
-| `06-Retest-Falla.png` | Re-test fallido |
+## 📸 Evidencias
+
+**Evento 4662: accesos de replicación de dvera (cuenta que no es de equipo) y 5136 asociado**
+
+![Evento 4662: accesos de replicación de dvera (cuenta que no es de equipo) y 5136 asociado](Evidencias/03-Evento-4662-Replicacion.png)
+
+**Remediación: queda solo la delegación legítima de Helpdesk**
+
+![Remediación: queda solo la delegación legítima de Helpdesk](Evidencias/05-Remediacion-dsacls.png)
+
+**Reset de krbtgt: msDS-KeyVersionNumber = 4**
+
+![Reset de krbtgt: msDS-KeyVersionNumber = 4](Evidencias/07-Reset-krbtgt-KVNO.png)
+
+> **Pendiente:** captura del re-test (el intento de replicación fallando tras la remediación).

@@ -1,19 +1,20 @@
 # 🔁 Iteraciones de hardening
 
-| Iter. | Foco | Cambios principales | Score |
-|---|---|---|---|
-| Baseline | Línea base | Informe inicial | 70 |
-| 1 | Auditoría | Advanced Audit Policy completa, log de 512 MB, auditoría de línea de comandos (GPO `SEC-DC-Auditoria-Avanzada`) | _completar_ |
-| 2 | Hardening | Correcciones iniciales de configuración | _completar_ |
-| 3 | Admin nominal | Cuenta `adm.bfernandez` para tareas administrativas | _completar_ |
-| 4 | Protected Users | Admin nominal en el grupo Protected Users | _completar_ |
-| 5 | Hardening por GPO | GPO `SEC-Dominio-Hardening` (HardenedPaths, LmCompatibilityLevel 5) | _completar_ |
-| 6 | Backup / cuentas de servicio | Cuentas de servicio reorganizadas, contraseñas aleatorias, flags corregidos | 20 |
-| 7 | Post-pruebas | Remediación de hallazgos tras las pruebas de seguridad, `krbtgt` reseteado dos veces, ACL excesivas eliminadas | 20 |
-| 8 | LAPS + FGPP | Windows LAPS en OU `Windows10`, PSO de 25 caracteres para cuentas de servicio | 5 |
-| 9 | LLMNR/mDNS | LLMNR, mDNS y NBT-NS deshabilitados por GPO | 5 |
+| Iter. | Foco | Cambios principales | Stale / Priv. / Anom. | Score |
+|---|---|---|---|---|
+| Baseline | Línea base | Informe inicial | — / — / — | 70 |
+| 1 y 1b | Auditoría | Advanced Audit Policy completa, log de 512 MB, auditoría de línea de comandos (GPO `SEC-DC-Auditoria-Avanzada`) | 46 / 60 / 70 | 70 |
+| 1c | Auditoría | Ajustes de auditoría (el bloque "Audit" del modelo de riesgo pasa a azul) | 46 / 60 / 60 | 60 |
+| 2 | Quick wins | Spooler detenido y deshabilitado, contraseña mínima de 12, `MachineAccountQuota` en 0, Papelera de reciclaje de AD habilitada | — / 40 / 40 | 40 |
+| 3 | Admin nominal | Cuenta `adm.bfernandez` en OU `11_Cuentas-Admin`, con `AccountNotDelegated`, para tareas administrativas | 31 / 30 / 40 | 40 |
+| 4 | Protected Users | Admin nominal y cuenta integrada en el grupo Protected Users | 31 / 20 / 40 | 40 |
+| 5 | GPO de hardening | GPO `SEC-Dominio-Hardening`: NTLMv2 only y Hardened UNC Paths | 16 / 20 / 35 | 35 |
+| 6 | Backup | Backup de AD (cierra la regla de último backup) | 16 / 20 / 20 | 20 |
+| 7 | Post-pruebas | Remediación de hallazgos tras las pruebas de seguridad: `krbtgt` reseteado dos veces (versión 4), ACL excesiva removida | — / 0 / 20 | 20 |
+| 8 | LAPS + FGPP | Windows LAPS en OU `Windows10`, PSO de 25 caracteres para cuentas de servicio | — / 0 / 5 | 5 |
+| 9 | LLMNR/mDNS | LLMNR, mDNS y NBT-NS deshabilitados por GPO | 5 / 0 / 5 | 5 |
 
-> Completá los scores de las iteraciones 1 a 5 con los informes guardados en `C:\Tools` de DC01.
+> Las columnas son los tres indicadores de PingCastle que cambian entre iteraciones (Stale Objects, Privileged Accounts, Anomalies; Trusts fue 0 siempre). "—" indica que ese valor no se registró en el video del informe. Evidencias: [`Evidencias/`](Evidencias/).
 
 ## Comandos clave
 

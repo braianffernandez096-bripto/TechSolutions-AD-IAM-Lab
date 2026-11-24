@@ -119,6 +119,8 @@ $reporte | Export-Csv -Path "C:\Scripts\Reporte_Bajas.csv" -NoTypeInformation -E
 | Simulación | No | Soporta `-WhatIf`: muestra qué haría sin cambiar nada |
 | UPN | Fijo | `-UpnSuffix` configurable, pensado para la futura sincronización con Microsoft 365 |
 
+![Alta masiva v2 en modo WhatIf](Evidencias/06-Alta-Masiva-v2-WhatIf.gif)
+
 **Columnas del CSV:** `Nombre, Apellido, SamAccountName, Departamento, Puesto, OU, Grupo, Manager`. La columna `OU` es relativa a `-BaseDN`; para una sub-OU se escribe `HelpDesk,OU=04_IT`. Ejemplo en [`Ejemplos/Nuevos-Usuarios-Ejemplo-v2.csv`](Ejemplos/Nuevos-Usuarios-Ejemplo-v2.csv).
 
 ```powershell

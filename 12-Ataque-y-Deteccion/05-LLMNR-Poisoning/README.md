@@ -33,10 +33,18 @@ Además, `LmCompatibilityLevel 5` (solo NTLMv2).
 ## ✅ Re-test
 Tras `gpupdate /force` y reinicio del cliente, el mismo nombre inexistente ya no genera respuesta LLMNR/NBT-NS y la herramienta no captura ningún hash.
 
-## 📸 Evidencias (`Evidencias/`)
-| Archivo | Muestra |
-|---|---|
-| `01-Sysmon-22-Consulta.png` | Consulta DNS fallida |
-| `02-Captura-Difuminada.png` | Captura (**difuminar el hash**) |
-| `03-GPO-LLMNR-Off.png` | Configuración de la GPO |
-| `04-Retest-Sin-Captura.png` | Re-test sin captura |
+## 📸 Evidencias
+
+**Respuestas envenenadas LLMNR / mDNS / NBT-NS y captura del desafío NTLMv2 (hash difuminado)**
+
+![Respuestas envenenadas LLMNR / mDNS / NBT-NS y captura del desafío NTLMv2 (hash difuminado)](Evidencias/01-Responder-Envenenamiento.png)
+
+**Sysmon 22 en el cliente: consulta del nombre inexistente**
+
+![Sysmon 22 en el cliente: consulta del nombre inexistente](Evidencias/03-Sysmon-22-Consulta-DNS.png)
+
+**Re-test: Responder escuchando, sin respuestas envenenadas ni capturas**
+
+![Re-test: Responder escuchando, sin respuestas envenenadas ni capturas](Evidencias/06-Retest-Responder-Sin-Eventos.png)
+
+> **Pendiente:** agregar el resultado de hashcat sobre los hashes de `ptorres` (Cracked o Exhausted).

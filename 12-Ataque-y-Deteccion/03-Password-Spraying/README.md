@@ -31,11 +31,14 @@ Get-WinEvent -FilterHashtable @{LogName='Security';Id=4625;StartTime=(Get-Date).
 ## ✅ Re-test
 Tras restablecer la cuenta débil y aplicar las políticas, el spray no obtiene accesos válidos.
 
-## 📸 Evidencias (`Evidencias/`)
-| Archivo | Muestra |
-|---|---|
-| `01-Spray-Resultado.png` | Salida de la prueba |
-| `02-Eventos-4625-4776.png` | Fallos en el DC |
-| `03-Consulta-Agrupada-Por-IP.png` | Consulta de detección |
-| `04-Evento-4624-Tipo3.png` | Logon exitoso correlacionado |
-| `05-Retest.png` | Re-test sin accesos |
+## 📸 Evidencias
+
+**Spray con una sola contraseña contra todos los usuarios; un acierto [+] (contraseña difuminada)**
+
+![Spray con una sola contraseña contra todos los usuarios; un acierto [+] (contraseña difuminada)](Evidencias/02-Spray-nxc.png)
+
+**Detección: 97 fallos desde una IP contra 91 usuarios distintos, y logon tipo 3 posteriores**
+
+![Detección: 97 fallos desde una IP contra 91 usuarios distintos, y logon tipo 3 posteriores](Evidencias/03-Deteccion-4625-Agrupado-por-IP.png)
+
+> **Pendiente:** repetir el spray tras cambiar la contraseña débil y agregar la captura del resultado.

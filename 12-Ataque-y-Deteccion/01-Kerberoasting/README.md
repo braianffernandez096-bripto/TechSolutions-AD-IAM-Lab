@@ -31,11 +31,17 @@ La solicitud ya no devuelve un ticket RC4 utilizable: impacket recibe `KDC_ERR_E
 
 > Nota técnica: cambiar la cuenta a AES **no** hace que el hash que obtiene la herramienta sea AES. La herramienta pide RC4 por defecto y el KDC lo rechaza; por eso el efecto visible es el error, no un hash más fuerte.
 
-## 📸 Evidencias (`Evidencias/`)
-| Archivo | Muestra |
-|---|---|
-| `01-Evento-4769-RC4.png` | 4769 con `0x17` |
-| `02-Hash-Crackeado-Difuminado.png` | Resultado del cracking (**difuminar**) |
-| `03-Defensa-AES.png` | Comando de remediación |
-| `04-Retest-ETYPE-NOSUPP.png` | Re-test fallido |
-| `05-Evento-4769-Rechazado.png` | 4769 con `0xffffffff` |
+## 📸 Evidencias
+
+**Hashcat sobre el ticket: Cracked (hash omitido)**
+
+![Hashcat sobre el ticket: Cracked (hash omitido)](Evidencias/03-Hashcat-Cracked.png)
+
+**Evento 4769: cifrado 0x17 (RC4) y la fila rechazada 0xffffffff tras la defensa**
+
+![Evento 4769: cifrado 0x17 (RC4) y la fila rechazada 0xffffffff tras la defensa](Evidencias/04-Evento-4769-RC4-y-Rechazado.png)
+
+**Re-test: KDC_ERR_ETYPE_NOSUPP, ya no se obtiene ticket RC4**
+
+![Re-test: KDC_ERR_ETYPE_NOSUPP, ya no se obtiene ticket RC4](Evidencias/05-Retest-ETYPE-NOSUPP.png)
+

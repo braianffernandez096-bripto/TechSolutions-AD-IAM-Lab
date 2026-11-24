@@ -16,3 +16,4 @@ Reporte de bajas:  PowerShell ISE → Consulta de cuentas deshabilitadas → Exp
 | 3 | `03-OU-Operaciones-Usuarios-Creados.png` | `08_Operaciones` en ADUC con los usuarios creados por el script (Sergio Fontana, Natalia Campos, Martin Gimenez, Mariana Rojas, Lucas Fernandez). |
 | 4 | `04-Script-Reporte-Bajas-Ejecucion.png` | `02-Reporte-Bajas-AD.ps1` en PowerShell ISE, consola con el resultado en tabla (María López / `mlopez`). |
 | 5 | `05-Reporte-Bajas-CSV.png` | `Reporte_Bajas.csv` abierto en el Bloc de notas — el archivo exportado real. |
+| 6 | [`06-Alta-Masiva-v2-WhatIf.gif`](06-Alta-Masiva-v2-WhatIf.gif) | `03-Alta-Masiva-v2.ps1 -WhatIf`: simulación sobre un CSV de 50 empleados, sin cambios reales. |

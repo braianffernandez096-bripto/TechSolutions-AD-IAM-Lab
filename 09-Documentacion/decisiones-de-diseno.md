@@ -44,6 +44,8 @@ Delegar permisos administrativos directo a una cuenta individual obliga a reconf
 
 Se dejó deshabilitada intencionalmente para que el Caso 6 (Disable vs. Delete) demuestre la irreversibilidad real de una eliminación — igual que en cualquier dominio real donde esa protección no esté activada. Queda documentado como mejora futura conocida, no como omisión no advertida.
 
+> **Actualización:** esa mejora se aplicó en la fase de hardening (iteración 2 de PingCastle): la Papelera de reciclaje de AD está habilitada desde entonces. El Caso 6 conserva su valor didáctico porque se resolvió antes de ese cambio.
+
 ---
 
 ## 🔹 Por qué se consolidó a un solo mecanismo de bloqueo de pantalla y un solo lugar para el banner legal

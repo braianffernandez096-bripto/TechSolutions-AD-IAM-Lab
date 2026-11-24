@@ -15,6 +15,10 @@ El laboratorio fue diseñado y validado en un entorno virtualizado, reproduciend
 
 ---
 
+![Progreso del riesgo de dominio](11-Hardening-PingCastle/Evidencias/11-Grafico-Progreso-Score.png)
+
+---
+
 ## 🎯 Objetivos del proyecto
 - Implementar un dominio empresarial con Active Directory Domain Services.
 - Diseñar una estructura organizada de Unidades Organizativas (OU).

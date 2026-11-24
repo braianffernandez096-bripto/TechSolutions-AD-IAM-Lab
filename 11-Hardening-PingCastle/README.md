@@ -4,9 +4,20 @@ Auditoría de seguridad de `techsolutions.local` con **PingCastle 4.1.2.0** y un
 
 ## 📈 Resultado
 
+![Progreso del score](Evidencias/11-Grafico-Progreso-Score.png)
+
+![Progreso animado](Evidencias/10-Progreso-Score-70-a-5.gif)
+
+
 | Momento | Score global (Basic) |
 |---|---|
 | Baseline | **70** |
+| Iteración 1 / 1b | 70 |
+| Iteración 1c | 60 |
+| Iteración 2 | 40 |
+| Iteración 3 | 40 |
+| Iteración 4 | 40 |
+| Iteración 5 | 35 |
 | Iteración 6 | 20 |
 | Iteración 7 | 20 |
 | Iteración 8 | 5 |

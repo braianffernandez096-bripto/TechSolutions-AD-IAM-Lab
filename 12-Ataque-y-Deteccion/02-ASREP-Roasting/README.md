@@ -30,11 +30,17 @@ Se agregó la consulta de cuentas con el flag como revisión periódica.
 ## ✅ Re-test
 El mismo intento desde Kali devuelve un archivo vacío (0 bytes): la cuenta exige preautenticación.
 
-## 📸 Evidencias (`Evidencias/`)
-| Archivo | Muestra |
-|---|---|
-| `01-Evento-4738-Flag.png` | Cambio del flag en la cuenta |
-| `02-Evento-4768-PreAuth0.png` | 4768 con `PreAuthType 0` |
-| `03-Hash-Crackeado-Difuminado.png` | Resultado (**difuminar**) |
-| `04-Defensa-Flag-Off.png` | Remediación |
-| `05-Retest-Archivo-Vacio.png` | Re-test fallido |
+## 📸 Evidencias
+
+**Evento 4738: cambio del UAC (0x210 → 0x10210, "No requiere autorización previa")**
+
+![Evento 4738: cambio del UAC (0x210 → 0x10210, "No requiere autorización previa")](Evidencias/04-Evento-4738-Flag-UAC.png)
+
+**Evento 4768: svc_backup con PreAuthType 0 (el resto usa 2)**
+
+![Evento 4768: svc_backup con PreAuthType 0 (el resto usa 2)](Evidencias/05-Evento-4768-PreAuth0.png)
+
+**Re-test: la cuenta exige preautenticación, archivo de 0 bytes**
+
+![Re-test: la cuenta exige preautenticación, archivo de 0 bytes](Evidencias/07-Retest-Archivo-Vacio.png)
+

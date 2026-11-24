@@ -13,7 +13,9 @@
 - **Deshabilitar:** inmediatamente en toda baja, sin excepción.
 - **Eliminar:** solo después de un período de retención definido por política (30-90 días típicamente), sin litigios ni investigaciones pendientes, y con cualquier recurso dependiente (buzón, archivos personales) ya liberado o reasignado.
 
-> Este laboratorio no tiene habilitada la Papelera de reciclaje de Active Directory, así que el borrado es realmente irreversible — igual que en cualquier dominio real sin esa protección activada.
+> Este laboratorio no tenía habilitada la Papelera de reciclaje de Active Directory cuando se resolvió este caso, así que el borrado fue realmente irreversible — igual que en cualquier dominio real sin esa protección activada.
+>
+> **Actualización (fase de hardening):** la Papelera de reciclaje se habilitó después, como parte de las mejoras de resiliencia (ver [`11-Hardening-PingCastle`](../../11-Hardening-PingCastle/iteraciones.md), iteración 2). Hoy un borrado sería recuperable dentro del período de retención de objetos eliminados.
 
 **Ticket REQ-006**
 
