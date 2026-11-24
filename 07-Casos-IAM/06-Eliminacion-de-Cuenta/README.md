@@ -47,7 +47,7 @@
 
 ## 📸 Evidencias
 
-4 capturas, numeradas directo en esta carpeta (sin subcarpeta `Evidencias/`):
+6 capturas, numeradas directo en esta carpeta (sin subcarpeta `Evidencias/`):
 
 | # | Captura | Qué muestra |
 |---|---|---|
@@ -55,5 +55,7 @@
 | 2 | [`02-Confirmacion-Eliminar-Usuario.png`](02-Confirmacion-Eliminar-Usuario.png) | "¿Está seguro de que desea eliminar Usuario con el nombre 'Test 01'?" |
 | 3 | [`03-Evento-Auditoria-4726-Eliminacion.png`](03-Evento-Auditoria-4726-Eliminacion.png) | Evento 4726 — se eliminó una cuenta de usuario. |
 | 4 | [`04-Evento-Auditoria-5141-Objeto-Eliminado.png`](04-Evento-Auditoria-5141-Objeto-Eliminado.png) | Evento 5141 — objeto movido a `Deleted Objects`. |
+| 5 | [`05-OU-Disabled-Users-Sin-Test01.png`](05-OU-Disabled-Users-Sin-Test01.png) | OU `13_Disabled_Users` post-eliminación: quedan solo las cuentas de bajas anteriores, sin `Test 01`. |
+| 6 | [`06-Get-ADUser-Test01-Sin-Resultado.png`](06-Get-ADUser-Test01-Sin-Resultado.png) | `Get-ADUser -Filter "Name -eq 'Test 01'"` no devuelve ningún objeto. |
 
-> Pendiente: la vista de la OU `13_Disabled_Users` ya sin la cuenta `Test 01` (post-eliminación). No se tomó la captura; los eventos 4726/5141 ya respaldan la eliminación por sí solos.
+> La eliminación queda respaldada por tres fuentes independientes: los eventos 4726/5141, la vista de la OU y la consulta a AD.
