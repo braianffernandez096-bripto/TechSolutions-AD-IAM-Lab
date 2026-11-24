@@ -47,7 +47,10 @@ Acceso concedido solo si el usuario pertenece al GG correspondiente
 | DC01 | Controlador de dominio, DNS, GPO, File Server |
 | Cliente Windows 10 | Estación de trabajo de usuario final |
 | `C:\Compartidos` | Recurso compartido con estructura por departamento |
-| GPOs | Banner legal, bloqueo de cuenta, restricciones, auditoría |
+| GPOs | Banner legal, bloqueo de cuenta, restricciones, auditoría, hardening, LAPS |
+| Kali Linux | Máquina de pruebas para validar defensas |
+| Sysmon | Telemetría de endpoint en DC01 y Windows 10 |
+| PingCastle | Auditoría de seguridad de AD (score 70 → 5) |
 
 ---
 
@@ -57,7 +60,16 @@ Acceso concedido solo si el usuario pertenece al GG correspondiente
 Host físico (VMware)
  └── Red privada de laboratorio · 192.168.x.0/24 · máscara 255.255.255.0
       ├── DC01 · Windows Server 2022 · AD DS + DNS + GPO + File Server
-      └── Cliente Windows 10 · unido a techsolutions.local
+      ├── Cliente Windows 10 · unido a techsolutions.local · Sysmon
+      └── Kali Linux · máquina de pruebas
+```
+
+```
+Kali ──pruebas──▶ DC01 / Win10
+                      ├─ Security log (Advanced Audit Policy)
+                      └─ Sysmon (Operational)
+                      ▼
+            Event Viewer / Get-WinEvent ──▶ (próximo) Wazuh
 ```
 
 Las direcciones IP están parcialmente ocultas en las capturas de [`01-Infraestructura`](../01-Infraestructura/).

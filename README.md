@@ -4,6 +4,7 @@
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-AD%20DS-blue)
 ![IAM](https://img.shields.io/badge/IAM-AGDLP-purple)
 ![PowerShell](https://img.shields.io/badge/PowerShell-Automatización-blue)
+![PingCastle](https://img.shields.io/badge/PingCastle-70%20%E2%86%92%205-brightgreen)
 ---
 ## 📌 Descripción
 Este proyecto consiste en la implementación de un laboratorio empresarial de Active Directory e Identity and Access Management (IAM) utilizando Windows Server 2022.
@@ -27,6 +28,8 @@ El laboratorio fue diseñado y validado en un entorno virtualizado, reproduciend
 - Configurar delegación administrativa para un equipo de Helpdesk.
 - Automatizar tareas administrativas mediante PowerShell.
 - Validar cada implementación mediante pruebas y evidencias.
+- Auditar el dominio con **PingCastle**, aplicar hardening iterativo y bajar el score de riesgo de **70 a 5**.
+- Validar las defensas con pruebas desde una VM Kali y detectar la actividad con Event Viewer y Sysmon.
 ---
 ## 🏗️ Arquitectura del laboratorio
 El entorno representa una infraestructura empresarial simplificada basada en Windows Server 2022 y clientes Windows unidos al dominio.
@@ -56,6 +59,8 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
                               └─────────────────┘
 ```
 
+> El laboratorio suma una VM **Kali Linux** (para validar defensas) y **Sysmon 15.22** en DC01 y en el cliente Windows 10 como telemetría de detección.
+
 > Las OUs de equipos (`Windows10`, `Windows11`, `Laptops` y `Servidores`) están creadas en `09_Equipos` / `10_Servidores`; hoy el laboratorio tiene un cliente Windows 10 unido al dominio.
 
 ---
@@ -72,6 +77,7 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 | [`08-PowerShell`](08-PowerShell/) | Scripts de automatización (alta masiva, reporte de bajas) |
 | [`09-Documentacion`](09-Documentacion/) | Arquitectura y decisiones de diseño |
 | [`10-Service-Desk`](10-Service-Desk/) | Próximo proyecto — Mesa de ayuda con Jira sobre este mismo entorno (no iniciado) |
+| [`11-Hardening-PingCastle`](11-Hardening-PingCastle/) | Auditoría con PingCastle 4.1.2.0 y 9 iteraciones de hardening: score 70 → 5 |
 ---
 ## 🎯 Habilidades demostradas
 - Instalación y configuración de Active Directory Domain Services.
@@ -83,8 +89,13 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 - Auditoría de Active Directory (SACL, Advanced Audit Policy, análisis de Event IDs).
 - Delegación de permisos siguiendo el principio de mínimo privilegio.
 - Automatización con PowerShell (alta masiva, reportes).
+- Auditoría de seguridad de AD con PingCastle y hardening iterativo (LAPS, Fine-Grained Password Policy, Protected Users, admin nominal, krbtgt, AES-only, LLMNR/mDNS off).
+- Detección con Event IDs de seguridad y Sysmon.
 - Documentación técnica orientada a portafolio.
 ---
 ## ✅ Estado del proyecto
-Laboratorio de IAM + Active Directory (carpetas `01` a `09`): **completo**.
-Próximo paso: proyecto de Soporte IT con Jira, construido sobre este mismo entorno (ver [`10-Service-Desk`](10-Service-Desk/)).
+- Laboratorio de IAM + Active Directory (carpetas `01` a `09`): **completo**.
+- Hardening con PingCastle (carpeta `11`): **completo**, con pendientes documentados en [`pendientes.md`](11-Hardening-PingCastle/pendientes.md).
+- Próximas fases: documentación de pruebas y detección, SIEM con Wazuh, Microsoft 365 / Entra ID híbrido, proyecto de Soporte IT con Jira ([`10-Service-Desk`](10-Service-Desk/)) y re-auditoría final con PingCastle 4.1.2.0.
+
+> ⚠️ Laboratorio aislado con fines educativos. Los usuarios y configuraciones débiles que aparecen en la documentación se crearon a propósito en el laboratorio y ya fueron remediados.

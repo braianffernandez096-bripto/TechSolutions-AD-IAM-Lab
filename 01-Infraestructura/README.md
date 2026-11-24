@@ -72,6 +72,18 @@ Propiedades del sistema del cliente Windows 10: el campo **Dominio** muestra `te
 
 ---
 
+## 5. Máquinas virtuales del laboratorio
+
+| VM | Rol | SO | Notas |
+|---|---|---|---|
+| DC01 | Controlador de dominio, DNS, File Server | Windows Server 2022 (4 GB RAM) | Sysmon 15.22 |
+| Cliente Windows 10 | Estación de trabajo de dominio | Windows 10 22H2 | OU `09_Equipos/Windows10`; Sysmon 15.22; Windows LAPS |
+| Kali Linux | Máquina de pruebas | Kali Linux | Misma red NAT, usada para validar defensas |
+
+Red: VMware NAT, segmento `192.168.x.0/24` (IPs parcialmente ocultas en las capturas). El laboratorio está aislado del resto de la red.
+
+---
+
 ## 🚀 Siguiente paso
 
 Con el dominio y el DNS funcionando, se construyó la estructura de OUs, usuarios y grupos — ver [`02-Active-Directory`](../02-Active-Directory/).

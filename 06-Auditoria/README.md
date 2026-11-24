@@ -83,3 +83,27 @@ El sistema de auditoría queda demostrado en funcionamiento de dos formas: los E
 | 3 | [`03-Evento-4728-Alta-en-Grupo.png`](03-Evento-4728-Alta-en-Grupo.png) | Event ID 4728 — alta de `mlopez` como miembro de un grupo global. |
 | 4 | [`04-Evento-4725-Cuenta-Deshabilitada.png`](04-Evento-4725-Cuenta-Deshabilitada.png) | Event ID 4725 — deshabilitación de la cuenta `mlopez`. |
 | 5 | [`05-Evento-4738-Cuenta-Modificada.png`](05-Evento-4738-Cuenta-Modificada.png) | Event ID 4738 — modificación de la cuenta `mlopez`. |
+
+
+---
+
+# 🔎 Ampliación: auditoría orientada a detección
+
+Además de la trazabilidad de IAM, se amplió la auditoría para poder detectar actividad sospechosa:
+
+- Advanced Audit Policy completa vía `SEC-DC-Auditoria-Avanzada` (ver [`05-Group-Policy`](../05-Group-Policy/politicas.md)).
+- SACL en la raíz del dominio para derechos extendidos de replicación.
+- **Sysmon 15.22** con configuración SwiftOnSecurity v74 en DC01 y en Windows 10.
+
+| Event ID | Qué registra | Para qué sirve |
+|---|---|---|
+| 4768 | TGT solicitado | `PreAuthType 0` indica una cuenta sin preautenticación |
+| 4769 | Ticket de servicio | Cifrado `0x17` (RC4) es una señal de alerta |
+| 4625 / 4776 / 4771 | Fallos de autenticación | Muchos usuarios distintos desde una IP = spraying |
+| 4624 (tipo 3) | Logon de red | Correlación con los fallos |
+| 4738 | Cuenta modificada | Cambios de flags (UAC) |
+| 4662 | Acceso a objeto de directorio | GUIDs de replicación desde una cuenta que no es `$` |
+| 5136 | Atributo de directorio modificado | Cambios en `nTSecurityDescriptor` de la raíz |
+| Sysmon 1 / 3 / 22 | Proceso / red / DNS | Telemetría de endpoint |
+
+**Limitaciones observadas:** con la configuración SwiftOnSecurity, Sysmon no ve tráfico SMB (lo maneja el proceso System) ni el tráfico LLMNR; en esos casos se prioriza la prevención por GPO y el log de seguridad.
