@@ -104,9 +104,37 @@ $reporte | Export-Csv -Path "C:\Scripts\Reporte_Bajas.csv" -NoTypeInformation -E
 
 ---
 
-## 🔧 Mejoras sugeridas (no implementadas todavía)
+## 🔐 Versión 2 del alta masiva
 
-Quedan anotadas para no perderlas, pero el script documentado arriba es el que realmente se ejecutó — estas son ideas para una próxima iteración, no cambios ya aplicados:
+[`Scripts/03-Alta-Masiva-v2.ps1`](Scripts/03-Alta-Masiva-v2.ps1) es la evolución de `01-Crear-Usuarios-AD.ps1` y resuelve sus limitaciones (incluidas las dos mejoras que habían quedado anotadas):
+
+| Aspecto | Versión 1 | Versión 2 |
+|---|---|---|
+| Contraseña temporal | Fija (`Bienvenido123!`) para todos | Aleatoria de 16 caracteres, distinta por usuario, con generador criptográfico |
+| Credenciales | No se registraban | CSV de salida **fuera del repositorio** (`-CredentialsOut`, por defecto en el perfil del usuario) |
+| Errores | Una excepción cortaba el lote | `try/catch` por usuario: se registra y sigue con el siguiente |
+| Idempotencia | Si el usuario existía, no corregía su grupo | Si existe, verifica y corrige la membresía faltante |
+| Grupo | Deducido como `GG_<Departamento>` | Columna `Grupo` explícita (necesaria para `GG_SOC`, `GG_BlueTeam`, etc.) |
+| Manager | No | Se asigna en una segunda pasada, cuando ya existen todos los usuarios |
+| Simulación | No | Soporta `-WhatIf`: muestra qué haría sin cambiar nada |
+| UPN | Fijo | `-UpnSuffix` configurable, pensado para la futura sincronización con Microsoft 365 |
+
+**Columnas del CSV:** `Nombre, Apellido, SamAccountName, Departamento, Puesto, OU, Grupo, Manager`. La columna `OU` es relativa a `-BaseDN`; para una sub-OU se escribe `HelpDesk,OU=04_IT`. Ejemplo en [`Ejemplos/Nuevos-Usuarios-Ejemplo-v2.csv`](Ejemplos/Nuevos-Usuarios-Ejemplo-v2.csv).
+
+```powershell
+# 1) Simulación: no cambia nada
+.\03-Alta-Masiva-v2.ps1 -CsvPath C:\Scripts\Empleados.csv -WhatIf
+# 2) Ejecución real
+.\03-Alta-Masiva-v2.ps1 -CsvPath C:\Scripts\Empleados.csv
+```
+
+**Por qué importa:** una contraseña temporal igual para todos es el patrón que explota un *password spraying* (ver [`12-Ataque-y-Deteccion/03-Password-Spraying`](../12-Ataque-y-Deteccion/03-Password-Spraying/)). Con una contraseña única por usuario, adivinar una no compromete a las demás.
+
+> El CSV de credenciales **no se versiona** y debe borrarse después de entregar las contraseñas por un canal seguro. Los CSV con datos reales de empleados tampoco deben subirse: el repositorio solo incluye ejemplos con datos ficticios.
+
+## 🔧 Mejoras sugeridas (resueltas en la versión 2)
+
+El script documentado arriba (v1) es el que se ejecutó en la corrida original. Estas dos limitaciones se corrigieron en la v2:
 
 - **Manejo de error en `Add-ADGroupMember`**: si el CSV trae un departamento sin un grupo `GG_<Departamento>` existente, el script corta con una excepción no controlada en vez de loguear el problema y seguir con el siguiente usuario.
 - **Idempotencia parcial**: el chequeo de "¿ya existe?" evita duplicar el alta, pero si una corrida anterior falló justo después de crear el usuario y antes de agregarlo al grupo, una corrida nueva lo salta sin corregir la membresía faltante.

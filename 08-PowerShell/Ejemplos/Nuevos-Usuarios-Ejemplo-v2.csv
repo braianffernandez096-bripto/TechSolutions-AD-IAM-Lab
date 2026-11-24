@@ -1,0 +1,3 @@
+Nombre,Apellido,SamAccountName,Departamento,Puesto,OU,Grupo,Manager
+Sofia,Torres,storres,IT,Soporte Tecnico,"HelpDesk,OU=04_IT",GG_IT,
+Martin,Gimenez,mgimenez,Operaciones,Analista de Operaciones,08_Operaciones,GG_Operaciones,
