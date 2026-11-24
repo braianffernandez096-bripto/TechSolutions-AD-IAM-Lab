@@ -78,6 +78,7 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 | [`09-Documentacion`](09-Documentacion/) | Arquitectura y decisiones de diseño |
 | [`10-Service-Desk`](10-Service-Desk/) | Próximo proyecto — Mesa de ayuda con Jira sobre este mismo entorno (no iniciado) |
 | [`11-Hardening-PingCastle`](11-Hardening-PingCastle/) | Auditoría con PingCastle 4.1.2.0 y 9 iteraciones de hardening: score 70 → 5 |
+| [`12-Ataque-y-Deteccion`](12-Ataque-y-Deteccion/) | 5 escenarios validados desde Kali: detección (Event ID / Sysmon), defensa y re-test, mapeados a MITRE ATT&CK |
 ---
 ## 🎯 Habilidades demostradas
 - Instalación y configuración de Active Directory Domain Services.
@@ -90,12 +91,14 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 - Delegación de permisos siguiendo el principio de mínimo privilegio.
 - Automatización con PowerShell (alta masiva, reportes).
 - Auditoría de seguridad de AD con PingCastle y hardening iterativo (LAPS, Fine-Grained Password Policy, Protected Users, admin nominal, krbtgt, AES-only, LLMNR/mDNS off).
-- Detección con Event IDs de seguridad y Sysmon.
+- Detección con Event IDs de seguridad y Sysmon, mapeada a MITRE ATT&CK (T1558.003, T1558.004, T1110.003, T1003.006, T1557.001).
+- Redacción de detecciones accionables para un SOC L1 (qué evento, qué campo, qué umbral).
 - Documentación técnica orientada a portafolio.
 ---
 ## ✅ Estado del proyecto
 - Laboratorio de IAM + Active Directory (carpetas `01` a `09`): **completo**.
 - Hardening con PingCastle (carpeta `11`): **completo**, con pendientes documentados en [`pendientes.md`](11-Hardening-PingCastle/pendientes.md).
-- Próximas fases: documentación de pruebas y detección, SIEM con Wazuh, Microsoft 365 / Entra ID híbrido, proyecto de Soporte IT con Jira ([`10-Service-Desk`](10-Service-Desk/)) y re-auditoría final con PingCastle 4.1.2.0.
+- Escenarios de ataque y detección (carpeta `12`): **completo** (5 escenarios).
+- Próximas fases: SIEM con Wazuh, Microsoft 365 / Entra ID híbrido, proyecto de Soporte IT con Jira ([`10-Service-Desk`](10-Service-Desk/)) y re-auditoría final con PingCastle 4.1.2.0.
 
 > ⚠️ Laboratorio aislado con fines educativos. Los usuarios y configuraciones débiles que aparecen en la documentación se crearon a propósito en el laboratorio y ya fueron remediados.
