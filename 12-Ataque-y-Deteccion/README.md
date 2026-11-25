@@ -28,6 +28,10 @@ Telemetría: Advanced Audit Policy (GPO `SEC-DC-Auditoria-Avanzada`) + Sysmon co
 | 04 | [DCSync / abuso de ACL](04-DCSync-ACL-Abuse/) | T1003.006, T1222.001 | 5136, 4662 con GUIDs de replicación | Quitar ACL excesiva, reset de `krbtgt` x2 |
 | 05 | [LLMNR Poisoning](05-LLMNR-Poisoning/) | T1557.001 | Sysmon 22 (limitado) | GPO: LLMNR, mDNS y NBT-NS off |
 
+## 🛰️ Detección automática
+
+Las detecciones de estos escenarios se automatizaron en Wazuh con reglas propias, validadas repitiendo cada ataque: ver [`13-Wazuh-SIEM`](../13-Wazuh-SIEM/).
+
 ## 🧰 Utilidades de detección (PowerShell en DC01)
 
 Función auxiliar para leer campos del XML de un evento:

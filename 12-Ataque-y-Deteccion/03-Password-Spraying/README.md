@@ -26,7 +26,7 @@ Get-WinEvent -FilterHashtable @{LogName='Security';Id=4625;StartTime=(Get-Date).
 ## 🛡️ Defensa
 - Política de bloqueo (5 intentos / 15 min) y PSO para cuentas de servicio.
 - Contraseñas no predecibles (sin patrones tipo `Estación+Año!`) y longitud mayor.
-- Alerta por el patrón anterior (en el futuro, regla en Wazuh).
+- Alerta por el patrón anterior: implementada como regla `100211` de Wazuh (≥ 10 usuarios distintos desde una misma IP en 120 s), validada en [`13-Wazuh-SIEM`](../../13-Wazuh-SIEM/).
 
 ## ✅ Re-test
 Tras restablecer la cuenta débil y aplicar las políticas, el spray no obtiene accesos válidos.

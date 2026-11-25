@@ -1,0 +1,126 @@
+<!--
+  TechSolutions AD/IAM Lab - Reglas de deteccion para Active Directory (Wazuh 4.14)
+
+  Rango de IDs propio: 100200-100299
+  (el lab Threat-Hunting-Detection-Lab usa 100020-100110, no se pisan)
+
+  Reglas padre usadas (salen de las alertas reales de DC01):
+    60103  evento de Seguridad con auditoria exitosa (nivel 0)
+    60104  evento de Seguridad con auditoria fallida
+    60106  "Windows Logon Success" (incluye 4769)
+    60122  4625 "Unknown user or bad password"
+    60229  5136 "A directory service object was modified"
+
+  Nombres de campo: tal cual salen en el JSON de la alerta, sin el prefijo "data."
+  Validacion: wazuh-logtest no sirve para eventchannel, cada regla se prueba con el ataque real.
+-->
+<group name="windows,windows_security,techsolutions,ad,">
+
+  <!-- ===== 01 Kerberoasting (T1558.003) ===== -->
+  <!-- 4769 con ticket RC4 (0x17) hacia una cuenta de servicio de usuario (no krbtgt, no equipo) -->
+  <rule id="100201" level="12">
+    <if_sid>60103,60106</if_sid>
+    <field name="win.system.eventID">^4769$</field>
+    <field name="win.eventdata.ticketEncryptionType">^0x17$</field>
+    <field name="win.eventdata.status">^0x0$</field>
+    <field name="win.eventdata.serviceName" type="pcre2" negate="yes">(?i)(\$$|^krbtgt)</field>
+    <description>AD: posible Kerberoasting - TGS con cifrado RC4 para $(win.eventdata.serviceName) pedido por $(win.eventdata.targetUserName)</description>
+    <mitre>
+      <id>T1558.003</id>
+    </mitre>
+  </rule>
+
+  <!-- ===== 02 ASREP-Roasting (T1558.004) ===== -->
+  <!-- 4768 exitoso sin preautenticacion (PreAuthType 0) para una cuenta de usuario -->
+  <rule id="100202" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4768$</field>
+    <field name="win.eventdata.preAuthType">^0$</field>
+    <field name="win.eventdata.status">^0x0$</field>
+    <field name="win.eventdata.targetUserName" type="pcre2" negate="yes">\$$</field>
+    <description>AD: posible ASREP-Roasting - TGT sin preautenticacion para $(win.eventdata.targetUserName) desde $(win.eventdata.ipAddress)</description>
+    <mitre>
+      <id>T1558.004</id>
+    </mitre>
+  </rule>
+
+  <!-- ===== 03 Password spraying (T1110.003) ===== -->
+  <!-- 10 o mas usuarios distintos con fallo de logon desde la misma IP en 2 minutos -->
+  <rule id="100203" level="10">
+    <if_sid>60131</if_sid>
+    <field name="win.system.eventID">^4769$</field>
+    <field name="win.eventdata.ticketEncryptionType">^0xffffffff$</field>
+    <field name="win.eventdata.status">^0xe$</field>
+    <field name="win.eventdata.serviceName" type="pcre2" negate="yes">(?i)(\$$|krbtgt)</field>
+    <description>AD: intento de Kerberoasting bloqueado - RC4 rechazado para $(win.eventdata.serviceName) pedido por $(win.eventdata.targetUserName) desde $(win.eventdata.ipAddress)</description>
+    <mitre><id>T1558.003</id></mitre>
+  </rule>
+
+  <rule id="100211" level="10" frequency="10" timeframe="120">
+    <if_matched_sid>60122</if_matched_sid>
+    <same_field>win.eventdata.ipAddress</same_field>
+    <different_field>win.eventdata.targetUserName</different_field>
+    <description>AD: posible password spraying - fallos de logon contra 10 o mas usuarios distintos desde $(win.eventdata.ipAddress)</description>
+    <mitre>
+      <id>T1110.003</id>
+    </mitre>
+  </rule>
+
+  <!-- ===== 04 DCSync (T1003.006) y abuso de ACL (T1222.001) ===== -->
+  <!-- 4662 con los GUID de replicacion (Get-Changes / Get-Changes-All) pedido por una cuenta que no es de equipo.
+       Cuando se agregue Entra Connect (fase M365), excluir su cuenta MSOL_* para evitar falsos positivos. -->
+  <rule id="100221" level="14">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4662$</field>
+    <field name="win.eventdata.properties" type="pcre2">(?i)1131f6a[ad]-9c07-11d1-f79f-00c04fc2dcd2</field>
+    <field name="win.eventdata.subjectUserName" type="pcre2" negate="yes">\$$</field>
+    <description>AD: posible DCSync - replicacion de directorio pedida por $(win.eventdata.subjectUserName)</description>
+    <mitre>
+      <id>T1003.006</id>
+    </mitre>
+  </rule>
+
+  <!-- 5136: cambio de la ACL (nTSecurityDescriptor) en la raiz del dominio, paso previo al DCSync -->
+  <rule id="100222" level="14">
+    <if_sid>60229</if_sid>
+    <field name="win.system.eventID">^5136$</field>
+    <field name="win.eventdata.attributeLDAPDisplayName">^nTSecurityDescriptor$</field>
+    <field name="win.eventdata.objectDN" type="pcre2">(?i)^DC=techsolutions,DC=local$</field>
+    <description>AD: ACL de la raiz del dominio modificada por $(win.eventdata.subjectUserName)</description>
+    <mitre>
+      <id>T1222.001</id>
+    </mitre>
+  </rule>
+
+  <!-- 5136: SPN agregado a una cuenta de usuario (Kerberoasting dirigido) -->
+  <rule id="100223" level="10">
+    <if_sid>60229</if_sid>
+    <field name="win.system.eventID">^5136$</field>
+    <field name="win.eventdata.attributeLDAPDisplayName">^servicePrincipalName$</field>
+    <field name="win.eventdata.objectClass">^user$</field>
+    <description>AD: SPN modificado en la cuenta de usuario $(win.eventdata.objectDN) por $(win.eventdata.subjectUserName)</description>
+    <mitre>
+      <id>T1558.003</id>
+    </mitre>
+  </rule>
+
+  <!-- ===== Afinado de falsos positivos documentados ===== -->
+  <!-- Triage 001: el agente de Wazuh (SCA) lanza PowerShell de 32 bits como SYSTEM y este crea
+       un archivo temporal __PSScriptPolicyTest_*.ps1 en SystemTemp. Regla original: 92205 -->
+  <rule id="100290" level="0">
+    <if_sid>92205</if_sid>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)SystemTemp.+__PSScriptPolicyTest_[a-z0-9.]+\.ps1$</field>
+    <description>FP documentado: prueba de politica de scripts de PowerShell (SCA del agente)</description>
+  </rule>
+
+  <!-- Triage 001: el SCA del agente exporta la politica con secedit (secpol.cfg / secexport.cfg) para evaluar
+       politicas de contrasena, bloqueo y LSA, uno por chequeo.
+       Regla original: 92066 -->
+  <rule id="100291" level="0">
+    <if_sid>92066</if_sid>
+    <field name="win.eventdata.currentDirectory" type="pcre2">(?i)ossec-agent</field>
+    <field name="win.eventdata.parentCommandLine" type="pcre2">(?i)secedit /export /cfg .+(secpol|secexport)\.cfg</field>
+    <description>FP documentado: secedit lanzado por el SCA del agente de Wazuh</description>
+  </rule>
+
+</group>
