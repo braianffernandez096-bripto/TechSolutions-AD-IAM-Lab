@@ -34,7 +34,7 @@ El criterio de aceptación fue estricto: una regla solo se considera lista si **
 | `100221` | DCSync | 14 | T1003.006 | 4662 con GUIDs `1131f6aa` / `1131f6ad` pedidos por una cuenta que no es de equipo | ✅ validada |
 | `100222` | ACL de la raíz del dominio modificada | 14 | T1222.001 | 5136 sobre `nTSecurityDescriptor` de `DC=techsolutions,DC=local` | ✅ validada |
 | `100223` | SPN agregado/modificado en una cuenta de usuario | 10 | T1558.003 | 5136 sobre `servicePrincipalName`, clase `user` | ✅ validada |
-| `100290` | Silenciador: prueba de política de scripts del SCA del agente | 0 | — | 92205 + `__PSScriptPolicyTest_*.ps1` en `SystemTemp` | ⚠️ validada contra el evento real de la primera tanda; no se repitió en vivo |
+| `100290` | Silenciador: prueba de política de scripts del SCA del agente | 0 | — | 92205 + `__PSScriptPolicyTest_*.ps1` en `SystemTemp` | ✅ validada (2 eventos Sysmon, 0 alertas) |
 | `100291` | Silenciador: `secedit` lanzado por el SCA del agente | 0 | — | 92066 + directorio del agente + `secedit /export /cfg …` | ✅ validada (20 `secedit`, 0 alertas) |
 
 ### Cómo se reprodujo cada ataque
@@ -49,6 +49,7 @@ El criterio de aceptación fue estricto: una regla solo se considera lista si **
 | `100221` | `impacket-secretsdump -just-dc-user <cuenta>` con `ptorres` | Se le concedió temporalmente `Replicating Directory Changes` y `… All` sobre la raíz del dominio; se revirtió y se verificó `0` ACEs |
 | `100222` | La propia concesión anterior (`Set-Acl` sobre la raíz) | Idem |
 | `100223` | `Set-ADUser … -ServicePrincipalNames @{Add=…}` | Se quitó el SPN al terminar |
+| `100290` | Tarea programada **como SYSTEM** que ejecuta el PowerShell de 32 bits (`SysWOW64`), igual que el SCA | Se creó, se ejecutó y se borró; se contó en Sysmon (ID 11) y se comparó con Wazuh |
 
 ## 📸 Evidencias
 

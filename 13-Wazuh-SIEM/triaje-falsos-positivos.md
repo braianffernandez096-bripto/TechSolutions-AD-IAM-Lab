@@ -52,6 +52,17 @@ Se forzó un escaneo SCA reiniciando el servicio del agente en DC01 y se contras
 
 Antes del afinado, un solo escaneo generaba unas 9 alertas `92066`.
 
+### Verificación de `100290`
+
+En los dos escaneos SCA posteriores el agente no volvió a generar el `__PSScriptPolicyTest`, así que se reprodujo a mano lo que hace el SCA: una tarea programada **como SYSTEM** que ejecuta el PowerShell de 32 bits (`C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`).
+
+| Medición | Resultado |
+|---|---|
+| Sysmon (ID 11): `__PSScriptPolicyTest_*.ps1` creados por el PowerShell de 32 bits como SYSTEM en `C:\Windows\SystemTemp` | **2** (17:34:30 y 17:34:31) |
+| Wazuh, últimos 15 min: alertas `92205` de DC01 | **0** |
+
+Dato extra: PowerShell crea este archivo de prueba **cada vez que arranca**, también en una sesión de administrador. Se vieron otros dos, del PowerShell de 64 bits de `adm.bfernandez`, en `AppData\Local\Temp`. Esos no cumplen las condiciones de la `100290` (no están en `SystemTemp` ni los lanza el agente), por lo que la regla no los toca.
+
 ### Lo que salió mal en el primer intento
 
 La primera versión de `100291` filtraba por `secexport\.cfg`, porque ese era el nombre que tenía el evento de la primera tanda. En el escaneo siguiente cada chequeo usaba `secpol.cfg` y las alertas **siguieron apareciendo**. Se corrigió con el regex `(secpol|secexport)` y se volvió a probar.
@@ -63,4 +74,4 @@ Lección: un silenciador se valida con un **escaneo nuevo**, no con el evento co
 | Regla | Estado |
 |---|---|
 | `100291` | ✅ validada en vivo (20 `secedit`, 0 alertas) |
-| `100290` | ⚠️ validada contra el evento real de la primera tanda; en los dos escaneos posteriores el SCA no volvió a generar el `__PSScriptPolicyTest`, así que no se pudo repetir en vivo |
+| `100290` | ✅ validada en vivo (ver abajo) |
