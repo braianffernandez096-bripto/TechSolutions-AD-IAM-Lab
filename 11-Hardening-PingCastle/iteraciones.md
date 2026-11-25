@@ -13,6 +13,7 @@
 | 7 | Post-pruebas | Remediación de hallazgos tras las pruebas de seguridad: `krbtgt` reseteado dos veces (versión 4), ACL excesiva removida | — / 0 / 20 | 20 |
 | 8 | LAPS + FGPP | Windows LAPS en OU `Windows10`, PSO de 25 caracteres para cuentas de servicio | — / 0 / 5 | 5 |
 | 9 | LLMNR/mDNS | LLMNR, mDNS y NBT-NS deshabilitados por GPO | 5 / 0 / 5 | 5 |
+| 10 | Re-auditoría post-SIEM | Sin cambios de hardening: verificación tras repetir los ataques para validar las reglas de Wazuh. Se corrigió `DoesNotRequirePreAuth` en `svc_backup` (estaba activo pese a la iteración 7) y se revisó la sesión nula de SMB/LDAP | 5 / 0 / 5 | 5 |
 
 > Las columnas son los tres indicadores de PingCastle que cambian entre iteraciones (Stale Objects, Privileged Accounts, Anomalies; Trusts fue 0 siempre). "—" indica que ese valor no se registró en el video del informe. Evidencias: [`Evidencias/`](Evidencias/).
 

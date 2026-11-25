@@ -128,7 +128,6 @@ Más detalle operativo (reinicios, versiones de agente, horarios) en [`notas-ope
 
 ## 📌 Pendientes
 
-- Revisar `Null Auth: True` que NetExec reportó en DC01, antes de la re-auditoría final con PingCastle.
 - Repetir la validación con WIN10 encendida (Sysmon del endpoint).
 - Notificaciones por correo para las alertas de nivel ≥ 12 (hoy figuran con `mail: true` pero no hay SMTP configurado).
 - Dashboards propios para el SOC L1 y runbook de respuesta por regla.
