@@ -80,7 +80,7 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 | [`07-Casos-IAM`](07-Casos-IAM/) | 7 casos reales resueltos: Joiner, Mover, Leaver, Reset Password, Unlock Account, Disable/Delete User, Delegación de permisos |
 | [`08-PowerShell`](08-PowerShell/) | Scripts de automatización (alta masiva, reporte de bajas) |
 | [`09-Documentacion`](09-Documentacion/) | Arquitectura y decisiones de diseño |
-| [`10-Service-Desk`](10-Service-Desk/) | Próximo proyecto — Mesa de ayuda con Jira sobre este mismo entorno (no iniciado) |
+| [`10-Service-Desk`](10-Service-Desk/) | Simulación de Help Desk L1 en Jira Service Management: 25 tickets en 5 días, SLA, escalamientos al SOC/IAM y un incidente de seguridad detectado desde un bloqueo de cuenta |
 | [`11-Hardening-PingCastle`](11-Hardening-PingCastle/) | Auditoría con PingCastle 4.1.2.0 y 9 iteraciones de hardening: score 70 → 5 |
 | [`12-Ataque-y-Deteccion`](12-Ataque-y-Deteccion/) | 5 escenarios validados desde Kali: detección (Event ID / Sysmon), defensa y re-test, mapeados a MITRE ATT&CK |
 | [`13-Wazuh-SIEM`](13-Wazuh-SIEM/) | SIEM con Wazuh: agentes en DC01 y Win10, 9 reglas propias (7 de detección + 2 de afinado) validadas repitiendo los ataques reales, triaje de falsos positivos y notas operativas |
@@ -99,6 +99,7 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 - Detección con Event IDs de seguridad y Sysmon, mapeada a MITRE ATT&CK (T1558.003, T1558.004, T1110.003, T1003.006, T1222.001, T1557.001).
 - Ingeniería de detección en Wazuh: reglas personalizadas sobre el Security log y Sysmon, validadas contra el ataque real (positiva y negativa) y triaje documentado de falsos positivos.
 - Redacción de detecciones accionables para un SOC L1 (qué evento, qué campo, qué umbral).
+- Gestión de tickets ITSM en Jira Service Management: triaje, SLA, escalamiento, verificación de identidad y base de conocimiento.
 - Documentación técnica orientada a portafolio.
 ---
 ## ✅ Estado del proyecto
@@ -106,6 +107,7 @@ El entorno representa una infraestructura empresarial simplificada basada en Win
 - Hardening con PingCastle (carpeta `11`): **completo**, con pendientes documentados en [`pendientes.md`](11-Hardening-PingCastle/pendientes.md).
 - Escenarios de ataque y detección (carpeta `12`): **completo** (5 escenarios).
 - SIEM con Wazuh (carpeta `13`): **completo** (9 reglas validadas), con pendientes listados en su [README](13-Wazuh-SIEM/README.md#-pendientes).
-- Próximas fases: Microsoft 365 / Entra ID híbrido, proyecto de Soporte IT con Jira ([`10-Service-Desk`](10-Service-Desk/)) y re-auditoría final con PingCastle 4.1.2.0.
+- Service Desk con Jira (carpeta `10`): **semana 1 completa** (25 tickets, SLA de resolución 100 %).
+- Próximas fases: Microsoft 365 / Entra ID híbrido y re-auditoría final con PingCastle 4.1.2.0.
 
 > ⚠️ Laboratorio aislado con fines educativos. Los usuarios y configuraciones débiles que aparecen en la documentación se crearon a propósito en el laboratorio y ya fueron remediados.
